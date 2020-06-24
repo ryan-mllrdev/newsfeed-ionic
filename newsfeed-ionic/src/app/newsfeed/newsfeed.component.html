@@ -1,0 +1,33 @@
+<ion-searchbar></ion-searchbar>
+<app-newsfeed-form></app-newsfeed-form>
+<ion-card *ngFor="let post of newsfeed | orderBy: id reverse:">
+
+  <ion-item>
+    <h2>{{post.postedBy.name}}</h2>
+  </ion-item>
+
+  <ion-card-content>
+    <p>{{post.message}}</p>
+  </ion-card-content>
+
+  <ion-row>
+    <ion-col>
+      <button ion-button icon-start clear small>
+        <ion-icon name="thumbs-up"></ion-icon>
+        <div>{{post.reactions.length}} Likes</div>
+      </button>
+    </ion-col>
+    <ion-col>
+      <button ion-button icon-start clear small>
+        <ion-icon name="text"></ion-icon>
+        <div>{{post.comments.length}} Comments</div>
+      </button>
+    </ion-col>
+    <ion-col align-self-center text-center>
+      <ion-note>
+        11h ago
+      </ion-note>
+    </ion-col>
+  </ion-row>
+
+</ion-card>
