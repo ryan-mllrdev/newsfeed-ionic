@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "message": "This is my first post.",
+        "date": "",
+        "comments": [],
+        "reactions": []
+    },
+    {
+        "id": 2,
+        "message": "This is my second post.",
+        "date": "",
+        "comments": [],
+        "reactions": []
+    },
+    {
+        "id": 3,
+        "message": "This is my third post.",
+        "date": "",
+        "comments": [],
+        "reactions": []
+    }
+]
