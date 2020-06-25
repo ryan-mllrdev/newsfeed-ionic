@@ -3,6 +3,7 @@ import { IUser } from '../interfaces/iuser';
 import { IComment } from '../interfaces/icomment';
 import { IReaction } from '../interfaces/ireaction';
 import { User } from './user';
+import { ReactionTypes } from '../interfaces/reactionTypes';
 
 export class Post implements IPost {
   id = 0;

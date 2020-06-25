@@ -8,7 +8,7 @@
       <app-newsfeed-form></app-newsfeed-form>
 
       <ng-template ngFor let-post [ngForOf]="newsfeed |orderBy:id">
-        <app-newsfeed-post [post]="post"></app-newsfeed-post>
+        <app-newsfeed-post [postId]="post.id"></app-newsfeed-post>
       </ng-template>
 
     </ion-col>

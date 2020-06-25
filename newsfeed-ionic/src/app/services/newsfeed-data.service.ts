@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IPost } from '../interfaces/ipost';
-import { Observable, of } from 'rxjs';
+import { Observable, of, ObjectUnsubscribedError } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { IReaction } from '../interfaces/ireaction';
 import { ReactionTypes } from '../interfaces/reactionTypes';
@@ -34,6 +34,12 @@ export class NewsfeedDataService {
     }
   }
 
+  deletePost(postId: number) {
+    const post: IPost = this.findPost(postId);
+    const index = this.newsfeed.indexOf(post);
+    this.newsfeed.splice(index, 1);
+  }
+
   findPost(id: number): IPost {
     const index: number = this.newsfeed.findIndex((post) => post.id === id);
     return this.newsfeed[index];
@@ -63,7 +69,44 @@ export class NewsfeedDataService {
     const ids: number[] = this.newsfeed.map((post) => {
       return post.id;
     });
+
+    if (!ids.length) {
+      return 1;
+    }
+
     return Math.max(...ids) + 1;
+  }
+
+  getNumberOfLikes(postId: number): number {
+    if (!postId) {
+      return 0;
+    }
+    const post: IPost = this.findPost(postId);
+    return post.reactions.filter((a) => a.reactionType === ReactionTypes.Like).length;
+  }
+
+  getNumberOfHearts(postId: number): number {
+    if (!postId) {
+      return 0;
+    }
+    const post: IPost = this.findPost(postId);
+    return post.reactions.filter((a) => a.reactionType === ReactionTypes.Heart).length;
+  }
+
+  getNumberOfSmiles(postId: number): number {
+    if (!postId) {
+      return 0;
+    }
+    const post: IPost = this.findPost(postId);
+    return post.reactions.filter((a) => a.reactionType === ReactionTypes.Smile).length;
+  }
+
+  getNumberOfComments(postId: number): number {
+    if (!postId) {
+      return 0;
+    }
+    const post: IPost = this.findPost(postId);
+    return post.comments.length;
   }
 
   private loadNewsfeed() {

@@ -12,6 +12,9 @@ import { NewsfeedFormModalComponent } from '../newsfeed/newsfeed-form/newsfeed-f
 import { OrderModule } from 'ngx-order-pipe';
 import { NewsfeedPostComponent } from '../newsfeed/newsfeed-post/newsfeed-post.component';
 import { NewsfeedPostCommentComponent } from '../newsfeed/newsfeed-post/newsfeed-post-comment/newsfeed-post-comment.component';
+import { NewsfeedPostReactionComponent } from '../newsfeed/newsfeed-post/newsfeed-post-reaction/newsfeed-post-reaction.component';
+import { NewsfeedPostSummaryComponent } from '../newsfeed/newsfeed-post/newsfeed-post-summary/newsfeed-post-summary.component';
+import { NewsfeedPostPopoverComponent } from '../newsfeed/newsfeed-post/newsfeed-post-popover/newsfeed-post-popover.component';
 
 @NgModule({
   imports: [CommonModule, FormsModule, ReactiveFormsModule, IonicModule, HomePageRoutingModule, OrderModule],
@@ -20,6 +23,9 @@ import { NewsfeedPostCommentComponent } from '../newsfeed/newsfeed-post/newsfeed
     NewsfeedComponent,
     NewsfeedPostComponent,
     NewsfeedPostCommentComponent,
+    NewsfeedPostReactionComponent,
+    NewsfeedPostSummaryComponent,
+    NewsfeedPostPopoverComponent,
     NewsfeedFormComponent,
     NewsfeedFormModalComponent,
   ],

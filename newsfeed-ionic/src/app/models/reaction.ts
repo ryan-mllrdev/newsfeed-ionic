@@ -4,5 +4,5 @@ import { ReactionTypes } from '../interfaces/reactionTypes';
 export class Reaction implements IReaction {
   id = 0;
   date: Date = new Date(Date.now());
-  reactionType: ReactionTypes = ReactionTypes.Like;
+  reactionType: ReactionTypes = 1;
 }

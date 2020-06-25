@@ -1,6 +1,5 @@
 export enum ReactionTypes {
   Like = 1,
-  Smiley = 2,
-  Laugh = 3,
-  Love = 4,
+  Heart = 2,
+  Smile = 3,
 }

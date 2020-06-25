@@ -1,10 +1,13 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Injectable } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { NewsfeedDataService } from 'src/app/services/newsfeed-data.service';
 import { NewsfeedFormModalComponent } from './newsfeed-form-modal/newsfeed-form-modal.component';
 import { IPost } from 'src/app/interfaces/ipost';
 import { Post } from 'src/app/models/post';
 
+@Injectable({
+  providedIn: 'platform',
+})
 @Component({
   selector: 'app-newsfeed-form',
   templateUrl: './newsfeed-form.component.html',
@@ -18,13 +21,16 @@ export class NewsfeedFormComponent implements OnInit {
 
   ngOnInit() {}
 
-  async showPostForm() {
+  async showPostForm(id: number = 0) {
     this.showModal = true;
     this.modal = await this.modalController.create({
       component: NewsfeedFormModalComponent,
-      cssClass: '',
+      cssClass: 'newsfeed-form-modal',
       showBackdrop: true,
       backdropDismiss: false,
+      componentProps: {
+        postId: id,
+      },
     });
     this.modal.onDidDismiss().then(() => {
       this.showModal = false;

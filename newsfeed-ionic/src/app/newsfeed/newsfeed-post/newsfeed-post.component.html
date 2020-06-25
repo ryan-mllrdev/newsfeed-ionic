@@ -1,33 +1,40 @@
 <ion-card>
-  <ion-item>
-    <ion-text>{{post.postedBy.name}}</ion-text>
-  </ion-item>
+
+  <ion-toolbar>
+    <ion-buttons slot="secondary">
+      <ion-button class="ion-no-padding ion-no-margin" fill="clear" (click)="editPost()">
+        <ion-icon slot="icon-only" name="create"></ion-icon>
+      </ion-button>
+      <ion-button class="ion-no-padding ion-no-margin" fill="clear" (click)="confirmDelete()">
+        <ion-icon slot="icon-only" name="trash"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <!-- <ion-buttons slot="primary">
+      <ion-button color="secondary" (click)="showAdvancedOptions()">
+        <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-buttons> -->
+    <ion-title>{{post.postedBy.name}}</ion-title>
+  </ion-toolbar>
+
+  <!-- <ion-item lines="none">
+    <ion-text slot="start">{{post.postedBy.name}}</ion-text>
+    <ion-text slot="end" style="font-size: xx-small;">{{post.date | date:'medium'}}</ion-text>
+  </ion-item> -->
 
   <ion-card-content>
     <p>{{post.message}}</p>
   </ion-card-content>
 
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <button ion-button icon-start clear small (click)="reactToPost($event,post.id)">
-          <ion-icon name="thumbs-up"></ion-icon>
-          <div>{{post.reactions.length}} Likes</div>
-        </button>
-      </ion-col>
-      <ion-col>
-        <button ion-button icon-start clear small>
-          <ion-icon name="text"></ion-icon>
-          <div>{{post.comments.length}} Comments</div>
-        </button>
-      </ion-col>
-      <ion-col align-self-center text-center>
-        <ion-note>
-          11h ago
-        </ion-note>
-      </ion-col>
-    </ion-row>
+  <ion-grid class="ion-no-padding ion-no-margin">
+    <app-newsfeed-post-summary [postId]="post.id" [numberOfLikes]="likes" [numberOfHearts]="hearts"
+      [numberOfSmiles]="smiles" [numberOfComments]="post.comments.length">
+    </app-newsfeed-post-summary>
+    <app-newsfeed-post-reaction (emitLikes)="getLikes($event)" (emitHearts)="getHearts($event)"
+      (emitSmiles)="getSmiles($event)" [postId]="post.id">
+    </app-newsfeed-post-reaction>
   </ion-grid>
+
   <ion-footer>
     <app-newsfeed-post-comment [postId]="post.id"></app-newsfeed-post-comment>
   </ion-footer>
