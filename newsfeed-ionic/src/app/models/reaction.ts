@@ -1,4 +1,5 @@
 import { IReaction } from '../interfaces/ireaction';
+import { ReactionTypes } from '../interfaces/reactionTypes';
 
 export class Reaction implements IReaction {
   id = 0;

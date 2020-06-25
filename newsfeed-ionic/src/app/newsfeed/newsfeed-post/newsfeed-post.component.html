@@ -1,0 +1,34 @@
+<ion-card>
+  <ion-item>
+    <ion-text>{{post.postedBy.name}}</ion-text>
+  </ion-item>
+
+  <ion-card-content>
+    <p>{{post.message}}</p>
+  </ion-card-content>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <button ion-button icon-start clear small (click)="reactToPost($event,post.id)">
+          <ion-icon name="thumbs-up"></ion-icon>
+          <div>{{post.reactions.length}} Likes</div>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-start clear small>
+          <ion-icon name="text"></ion-icon>
+          <div>{{post.comments.length}} Comments</div>
+        </button>
+      </ion-col>
+      <ion-col align-self-center text-center>
+        <ion-note>
+          11h ago
+        </ion-note>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-footer>
+    <app-newsfeed-post-comment [postId]="post.id"></app-newsfeed-post-comment>
+  </ion-footer>
+</ion-card>

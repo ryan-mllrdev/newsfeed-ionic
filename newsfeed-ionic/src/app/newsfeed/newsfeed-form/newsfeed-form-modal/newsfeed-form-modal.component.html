@@ -1,12 +1,14 @@
 <ion-card>
   <ion-item lines="none">
     <span slot="start">Create Post</span>
-    <ion-icon *ngIf="showModal" name="close-circle-outline" slot="end"></ion-icon>
+    <ion-button fill="clear" *ngIf="showModal" slot="end" (click)="closeModal()">
+      <ion-icon name="close-circle-outline"></ion-icon>
+    </ion-button>
   </ion-item>
   <ion-card-content>
     <ion-textarea placeholder="How are you doing?" [(ngModel)]="post.message"></ion-textarea>
   </ion-card-content>
   <ion-footer *ngIf="showModal">
-    <ion-button (click)="postMessage()">Post</ion-button>
+    <ion-button style="float:right;" (click)="postMessage()">Post</ion-button>
   </ion-footer>
 </ion-card>

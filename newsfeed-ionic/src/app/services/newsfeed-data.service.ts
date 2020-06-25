@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { IPost } from '../interfaces/ipost';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { IReaction } from '../interfaces/ireaction';
+import { ReactionTypes } from '../interfaces/reactionTypes';
+import { IComment } from '../interfaces/icomment';
 
 @Injectable({
   providedIn: 'platform',
@@ -31,11 +34,36 @@ export class NewsfeedDataService {
     }
   }
 
+  findPost(id: number): IPost {
+    const index: number = this.newsfeed.findIndex((post) => post.id === id);
+    return this.newsfeed[index];
+  }
+
+  addReaction(postId: number, typeOfReaction: ReactionTypes = ReactionTypes.Like) {
+    const post: IPost = this.findPost(postId);
+    const reaction: IReaction = {
+      id: 1,
+      reactionType: typeOfReaction,
+      date: new Date(Date.now()),
+    };
+    post.reactions.push(reaction);
+  }
+
+  writeComment(postId: number, commentText: string) {
+    const post: IPost = this.findPost(postId);
+    const comment: IComment = {
+      id: 1,
+      message: commentText,
+      date: new Date(Date.now()),
+    };
+    post.comments.push(comment);
+  }
+
   createId(): number {
     const ids: number[] = this.newsfeed.map((post) => {
       return post.id;
     });
-    return Math.max(...ids);
+    return Math.max(...ids) + 1;
   }
 
   private loadNewsfeed() {

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NewsfeedDataService } from '../services/newsfeed-data.service';
 import { IPost } from '../interfaces/ipost';
-import { Post } from '../models/post';
 
 @Component({
   selector: 'app-newsfeed',

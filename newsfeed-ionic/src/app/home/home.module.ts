@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
@@ -10,9 +10,18 @@ import { NewsfeedFormComponent } from '../newsfeed/newsfeed-form/newsfeed-form.c
 import { NewsfeedFormModalComponent } from '../newsfeed/newsfeed-form/newsfeed-form-modal/newsfeed-form-modal.component';
 
 import { OrderModule } from 'ngx-order-pipe';
+import { NewsfeedPostComponent } from '../newsfeed/newsfeed-post/newsfeed-post.component';
+import { NewsfeedPostCommentComponent } from '../newsfeed/newsfeed-post/newsfeed-post-comment/newsfeed-post-comment.component';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, IonicModule, HomePageRoutingModule, OrderModule],
-  declarations: [HomePage, NewsfeedComponent, NewsfeedFormComponent, NewsfeedFormModalComponent],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, IonicModule, HomePageRoutingModule, OrderModule],
+  declarations: [
+    HomePage,
+    NewsfeedComponent,
+    NewsfeedPostComponent,
+    NewsfeedPostCommentComponent,
+    NewsfeedFormComponent,
+    NewsfeedFormModalComponent,
+  ],
 })
 export class HomePageModule {}

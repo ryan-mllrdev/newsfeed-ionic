@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { IPost } from 'src/app/interfaces/ipost';
 import { Post } from 'src/app/models/post';
@@ -20,6 +20,11 @@ export class NewsfeedFormModalComponent implements OnInit {
   postMessage() {
     this.showModal = false;
     this.newsfeedDataService.savePost(this.post);
+    this.modalController.dismiss();
+  }
+
+  closeModal() {
+    this.showModal = false;
     this.modalController.dismiss();
   }
 }
