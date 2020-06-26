@@ -1,0 +1,14 @@
+ion-card {
+  ion-card-footer {
+    ion-text {
+      font-size: 10px;
+      float: right;
+      margin: 3px;
+    }
+  }
+  ion-card-header {
+    a {
+      text-decoration: underline;
+    }
+  }
+}

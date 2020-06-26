@@ -16,7 +16,8 @@ export class NewsfeedFormModalComponent implements OnInit {
     private newsfeedDataService: NewsfeedDataService,
     private formBuilder: FormBuilder,
   ) {
-    this.getPost();
+    this.post = new Post();
+    this.postForm = formBuilder.group({});
   }
 
   postForm: FormGroup;

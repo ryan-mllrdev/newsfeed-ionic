@@ -60,9 +60,20 @@ export class NewsfeedDataService {
     const comment: IComment = {
       id: 1,
       message: commentText,
+      postedBy: { id: 1, name: 'Ryan Repe' },
       date: new Date(Date.now()),
     };
     post.comments.push(comment);
+  }
+
+  getComments(postId: number, pageSize: number = 1, pageNumber: number = 1): IComment[] {
+    const post: IPost = this.findPost(postId);
+    return this.paginateComments(post.comments, pageSize, pageNumber);
+  }
+
+  private paginateComments(comments: IComment[], pageSize: number, pageNumber: number) {
+    // human-readable page numbers usually start with 1, so we reduce 1 in the first argument
+    return comments.slice((pageNumber - 1) * pageSize, pageNumber * pageSize);
   }
 
   createId(): number {

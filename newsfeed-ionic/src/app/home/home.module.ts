@@ -15,6 +15,8 @@ import { NewsfeedPostCommentComponent } from '../newsfeed/newsfeed-post/newsfeed
 import { NewsfeedPostReactionComponent } from '../newsfeed/newsfeed-post/newsfeed-post-reaction/newsfeed-post-reaction.component';
 import { NewsfeedPostSummaryComponent } from '../newsfeed/newsfeed-post/newsfeed-post-summary/newsfeed-post-summary.component';
 import { NewsfeedPostPopoverComponent } from '../newsfeed/newsfeed-post/newsfeed-post-popover/newsfeed-post-popover.component';
+import { NewsfeedPostCommentsComponent } from '../newsfeed/newsfeed-post/newsfeed-post-comments/newsfeed-post-comments.component';
+import { NewsfeedPostToolbarsComponent } from '../newsfeed/newsfeed-post/newsfeed-post-toolbars/newsfeed-post-toolbars.component';
 
 @NgModule({
   imports: [CommonModule, FormsModule, ReactiveFormsModule, IonicModule, HomePageRoutingModule, OrderModule],
@@ -26,6 +28,8 @@ import { NewsfeedPostPopoverComponent } from '../newsfeed/newsfeed-post/newsfeed
     NewsfeedPostReactionComponent,
     NewsfeedPostSummaryComponent,
     NewsfeedPostPopoverComponent,
+    NewsfeedPostCommentsComponent,
+    NewsfeedPostToolbarsComponent,
     NewsfeedFormComponent,
     NewsfeedFormModalComponent,
   ],

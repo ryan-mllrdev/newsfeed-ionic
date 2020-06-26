@@ -37,38 +37,4 @@ export class NewsfeedPostComponent implements OnInit {
   getSmiles(smiles: number) {
     this.smiles = smiles;
   }
-
-  async editPost() {
-    await this.newsfeedForm.showPostForm(this.postId);
-  }
-
-  deletePost() {
-    this.newsfeedDataService.deletePost(this.postId);
-  }
-
-  async confirmDelete() {
-    const alert = await this.alertController.create({
-      cssClass: 'confirm-delete-post',
-      header: 'Confirm Delete',
-      message: 'Do you really wish to delete this post?',
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: (blah) => {
-            console.log('Confirm Cancel: blah');
-          },
-        },
-        {
-          text: 'Delete',
-          handler: () => {
-            this.deletePost();
-          },
-        },
-      ],
-    });
-
-    await alert.present();
-  }
 }

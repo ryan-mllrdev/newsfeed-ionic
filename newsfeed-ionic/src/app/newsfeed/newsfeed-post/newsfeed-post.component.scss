@@ -2,3 +2,12 @@ ion-icon {
   height: 15px;
   width: 15px;
 }
+
+ion-title {
+  a {
+    text-decoration: underline;
+    :hover {
+      cursor: hand;
+    }
+  }
+}

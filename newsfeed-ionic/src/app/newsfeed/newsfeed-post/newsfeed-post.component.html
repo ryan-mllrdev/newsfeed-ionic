@@ -1,26 +1,5 @@
 <ion-card>
-
-  <ion-toolbar>
-    <ion-buttons slot="secondary">
-      <ion-button class="ion-no-padding ion-no-margin" fill="clear" (click)="editPost()">
-        <ion-icon slot="icon-only" name="create"></ion-icon>
-      </ion-button>
-      <ion-button class="ion-no-padding ion-no-margin" fill="clear" (click)="confirmDelete()">
-        <ion-icon slot="icon-only" name="trash"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    <!-- <ion-buttons slot="primary">
-      <ion-button color="secondary" (click)="showAdvancedOptions()">
-        <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
-      </ion-button>
-    </ion-buttons> -->
-    <ion-title>{{post.postedBy.name}}</ion-title>
-  </ion-toolbar>
-
-  <!-- <ion-item lines="none">
-    <ion-text slot="start">{{post.postedBy.name}}</ion-text>
-    <ion-text slot="end" style="font-size: xx-small;">{{post.date | date:'medium'}}</ion-text>
-  </ion-item> -->
+  <app-newsfeed-post-toolbars [post]="post"></app-newsfeed-post-toolbars>
 
   <ion-card-content>
     <p>{{post.message}}</p>
@@ -34,6 +13,8 @@
       (emitSmiles)="getSmiles($event)" [postId]="post.id">
     </app-newsfeed-post-reaction>
   </ion-grid>
+
+  <app-newsfeed-post-comments [comments]="post.comments"></app-newsfeed-post-comments>
 
   <ion-footer>
     <app-newsfeed-post-comment [postId]="post.id"></app-newsfeed-post-comment>
