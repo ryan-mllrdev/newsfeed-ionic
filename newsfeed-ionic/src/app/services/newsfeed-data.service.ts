@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { IReaction } from '../interfaces/ireaction';
 import { ReactionTypes } from '../interfaces/reactionTypes';
 import { IComment } from '../interfaces/icomment';
+import { IUser } from '../interfaces/iuser';
 
 @Injectable({
   providedIn: 'platform',
@@ -12,6 +13,7 @@ import { IComment } from '../interfaces/icomment';
 export class NewsfeedDataService {
   baseUrl = 'assets';
   newsfeed: IPost[] = [];
+  defaultUser: IUser = { id: 1, name: 'Ryan Repe' };
 
   constructor() {
     this.loadNewsfeed();
@@ -45,30 +47,141 @@ export class NewsfeedDataService {
     return this.newsfeed[index];
   }
 
-  addReaction(postId: number, typeOfReaction: ReactionTypes = ReactionTypes.Like) {
+  addReaction(postId: number, userId: number, typeOfReaction: ReactionTypes = ReactionTypes.Like) {
     const post: IPost = this.findPost(postId);
-    const reaction: IReaction = {
-      id: 1,
-      reactionType: typeOfReaction,
-      date: new Date(Date.now()),
-    };
-    post.reactions.push(reaction);
+    const reactions: IReaction[] = post.reactions;
+    const reactionIndex: number = reactions.findIndex(
+      (reactionValue) => reactionValue.reactedBy.id === userId && reactionValue.reactionType === typeOfReaction,
+    );
+
+    const foundReaction: IReaction = post.reactions[reactionIndex];
+    if (foundReaction) {
+      this.deleteReaction(postId, foundReaction.id);
+    } else {
+      const reaction: IReaction = {
+        id: this.createReactionId(postId),
+        reactionType: typeOfReaction,
+        date: new Date(Date.now()),
+        reactedBy: this.defaultUser,
+      };
+      post.reactions.push(reaction);
+    }
+  }
+
+  deleteReaction(postId: number, reactionId: number) {
+    const post: IPost = this.findPost(postId);
+    const index = this.findReactionIndex(postId, reactionId);
+    post.reactions.splice(index, 1);
   }
 
   writeComment(postId: number, commentText: string) {
     const post: IPost = this.findPost(postId);
     const comment: IComment = {
-      id: 1,
+      id: this.createCommentId(postId),
       message: commentText,
-      postedBy: { id: 1, name: 'Ryan Repe' },
+      postedBy: this.defaultUser,
       date: new Date(Date.now()),
     };
     post.comments.push(comment);
   }
 
+  updateComment(postId: number, commentToUpdate: IComment) {
+    const post: IPost = this.findPost(postId);
+    const index: number = this.findCommentIndex(postId, commentToUpdate.id);
+
+    if (index) {
+      const comment: IComment = {
+        ...commentToUpdate,
+      };
+
+      post.comments[index] = comment;
+    }
+  }
+
+  deleteComment(postId: number, commentId: number) {
+    const post: IPost = this.findPost(postId);
+    const index = this.findCommentIndex(postId, commentId);
+    post.comments.splice(index, 1);
+  }
+
+  findComment(postId: number, commentId: number): IComment {
+    const post: IPost = this.findPost(postId);
+    const index: number = post.comments.findIndex((comment) => comment.id === commentId);
+    return post.comments[index];
+  }
+
+  findCommentIndex(postId: number, commentId: number): number {
+    const post: IPost = this.findPost(postId);
+    const index: number = post.comments.findIndex((comment) => comment.id === commentId);
+    return index;
+  }
+
+  findReaction(postId: number, reactionId: number): IReaction {
+    const post: IPost = this.findPost(postId);
+    const index: number = post.reactions.findIndex((reaction) => reaction.id === reactionId);
+    return post.reactions[index];
+  }
+
+  findReactionIndex(postId: number, reactionId: number): number {
+    const post: IPost = this.findPost(postId);
+    const index: number = post.reactions.findIndex((reaction) => reaction.id === reactionId);
+    return index;
+  }
+
+  createCommentId(postId: number) {
+    const comments: IComment[] = this.getAllComments(postId);
+    const ids: number[] = comments.map((comment) => {
+      return comment.id;
+    });
+
+    if (!ids.length) {
+      return 1;
+    }
+
+    return Math.max(...ids) + 1;
+  }
+
+  createReactionId(postId: number) {
+    const reactions: IReaction[] = this.getAllReactions(postId);
+    const ids: number[] = reactions.map((reaction) => {
+      return reaction.id;
+    });
+
+    if (!ids.length) {
+      return 1;
+    }
+
+    return Math.max(...ids) + 1;
+  }
+
+  getAllComments(postId: number): IComment[] {
+    const post: IPost = this.findPost(postId);
+    return post.comments;
+  }
+
+  getAllReactions(postId: number): IReaction[] {
+    const post: IPost = this.findPost(postId);
+    return post.reactions;
+  }
+
   getComments(postId: number, pageSize: number = 1, pageNumber: number = 1): IComment[] {
     const post: IPost = this.findPost(postId);
     return this.paginateComments(post.comments, pageSize, pageNumber);
+  }
+
+  getLatestComments(postId: number, requestedSize: number): IComment[] {
+    const post: IPost = this.findPost(postId);
+    const commentsLength = post.comments.length;
+
+    if (requestedSize > commentsLength) {
+      return post.comments;
+    } else {
+      const from = commentsLength - requestedSize;
+      const to = commentsLength;
+
+      const comments: IComment[] = post.comments.slice(from, to);
+      return comments;
+    }
   }
 
   private paginateComments(comments: IComment[], pageSize: number, pageNumber: number) {

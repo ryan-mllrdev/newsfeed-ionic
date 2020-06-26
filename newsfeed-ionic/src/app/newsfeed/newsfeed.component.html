@@ -4,11 +4,14 @@
     </ion-col>
     <ion-col>
 
-      <ion-searchbar></ion-searchbar>
+      <ion-searchbar [(ngModel)]="searchPost"></ion-searchbar>
       <app-newsfeed-form></app-newsfeed-form>
 
-      <ng-template ngFor let-post [ngForOf]="newsfeed |orderBy:id">
+      <ng-template ngFor let-post [ngForOf]="newsfeed | filter:searchPost | orderBy:id">
+        <ion-item-divider>{{post.date|date:'medium'}}</ion-item-divider>
         <app-newsfeed-post [postId]="post.id"></app-newsfeed-post>
+        <ion-row>&nbsp;</ion-row>
+        <ion-row>&nbsp;</ion-row>
       </ng-template>
 
     </ion-col>

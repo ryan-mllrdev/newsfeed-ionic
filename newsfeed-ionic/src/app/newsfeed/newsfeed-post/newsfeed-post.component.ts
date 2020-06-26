@@ -3,6 +3,7 @@ import { IPost } from 'src/app/interfaces/ipost';
 import { NewsfeedDataService } from 'src/app/services/newsfeed-data.service';
 import { AlertController } from '@ionic/angular';
 import { NewsfeedFormComponent } from '../newsfeed-form/newsfeed-form.component';
+import { IComment } from 'src/app/interfaces/icomment';
 
 @Component({
   selector: 'app-newsfeed-post',
@@ -23,6 +24,9 @@ export class NewsfeedPostComponent implements OnInit {
   likes = 0;
   hearts = 0;
   smiles = 0;
+  comments: IComment[] = [];
+  showMoreComments = false;
+  allCommentsExpanded = false;
 
   ngOnInit() {
     this.post = this.newsfeedDataService.findPost(this.postId);
@@ -31,10 +35,20 @@ export class NewsfeedPostComponent implements OnInit {
   getLikes(likes: number) {
     this.likes = likes;
   }
+
   getHearts(hearts: number) {
     this.hearts = hearts;
   }
+
   getSmiles(smiles: number) {
     this.smiles = smiles;
+  }
+
+  handleEmittedComments(comments: IComment[]) {
+    this.comments = comments;
+  }
+
+  handleAllCommentsExpanded(allCommentsExpanded: boolean) {
+    this.allCommentsExpanded = allCommentsExpanded;
   }
 }

@@ -8,6 +8,7 @@ import { IPost } from '../interfaces/ipost';
   styleUrls: ['./newsfeed.component.scss'],
 })
 export class NewsfeedComponent implements OnInit {
+  searchPost = '';
   newsfeed: IPost[] = [];
 
   constructor(private newsfeedDataService: NewsfeedDataService) {

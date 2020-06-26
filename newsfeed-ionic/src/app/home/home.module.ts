@@ -15,11 +15,13 @@ import { NewsfeedPostCommentComponent } from '../newsfeed/newsfeed-post/newsfeed
 import { NewsfeedPostReactionComponent } from '../newsfeed/newsfeed-post/newsfeed-post-reaction/newsfeed-post-reaction.component';
 import { NewsfeedPostSummaryComponent } from '../newsfeed/newsfeed-post/newsfeed-post-summary/newsfeed-post-summary.component';
 import { NewsfeedPostPopoverComponent } from '../newsfeed/newsfeed-post/newsfeed-post-popover/newsfeed-post-popover.component';
-import { NewsfeedPostCommentsComponent } from '../newsfeed/newsfeed-post/newsfeed-post-comments/newsfeed-post-comments.component';
 import { NewsfeedPostToolbarsComponent } from '../newsfeed/newsfeed-post/newsfeed-post-toolbars/newsfeed-post-toolbars.component';
+import { CommentListToolbarsComponent } from '../newsfeed/newsfeed-post/newsfeed-post-comment-list/comment-list-toolbars/comment-list-toolbars.component';
+import { NewsfeedPostCommentListComponent } from '../newsfeed/newsfeed-post/newsfeed-post-comment-list/newsfeed-post-comment-list.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, IonicModule, HomePageRoutingModule, OrderModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, IonicModule, HomePageRoutingModule, OrderModule, Ng2SearchPipeModule],
   declarations: [
     HomePage,
     NewsfeedComponent,
@@ -28,7 +30,8 @@ import { NewsfeedPostToolbarsComponent } from '../newsfeed/newsfeed-post/newsfee
     NewsfeedPostReactionComponent,
     NewsfeedPostSummaryComponent,
     NewsfeedPostPopoverComponent,
-    NewsfeedPostCommentsComponent,
+    NewsfeedPostCommentListComponent,
+    CommentListToolbarsComponent,
     NewsfeedPostToolbarsComponent,
     NewsfeedFormComponent,
     NewsfeedFormModalComponent,

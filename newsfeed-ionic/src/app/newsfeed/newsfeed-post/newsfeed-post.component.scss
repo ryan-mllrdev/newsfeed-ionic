@@ -1,13 +1,8 @@
-ion-icon {
-  height: 15px;
-  width: 15px;
-}
-
-ion-title {
+.post-name {
   a {
     text-decoration: underline;
-    :hover {
-      cursor: hand;
-    }
   }
+}
+.post-date {
+  font-size: 10px;
 }

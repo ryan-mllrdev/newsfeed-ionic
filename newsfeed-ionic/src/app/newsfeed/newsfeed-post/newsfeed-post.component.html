@@ -1,5 +1,18 @@
 <ion-card>
-  <app-newsfeed-post-toolbars [post]="post"></app-newsfeed-post-toolbars>
+  <ion-item>
+    <ion-title>
+      <a>{{post.postedBy.name}}</a>
+      <!-- <ion-item-divider class="post-name">
+        <a>{{post.postedBy.name}}</a>
+      </ion-item-divider> -->
+      <!-- <ion-item-divider>
+        <ion-text class="post-date">
+          {{post.date | date:'medium'}}
+        </ion-text>
+      </ion-item-divider> -->
+    </ion-title>
+    <app-newsfeed-post-toolbars [post]="post"></app-newsfeed-post-toolbars>
+  </ion-item>
 
   <ion-card-content>
     <p>{{post.message}}</p>
@@ -14,9 +27,12 @@
     </app-newsfeed-post-reaction>
   </ion-grid>
 
-  <app-newsfeed-post-comments [comments]="post.comments"></app-newsfeed-post-comments>
+  <app-newsfeed-post-comment-list [postId]="post.id" [comments]="comments">
+  </app-newsfeed-post-comment-list>
 
   <ion-footer>
-    <app-newsfeed-post-comment [postId]="post.id"></app-newsfeed-post-comment>
+    <app-newsfeed-post-comment (emitAllCommentsExpanded)="handleAllCommentsExpanded($event)"
+      (emitComments)="handleEmittedComments($event)" [postId]="post.id">
+    </app-newsfeed-post-comment>
   </ion-footer>
 </ion-card>

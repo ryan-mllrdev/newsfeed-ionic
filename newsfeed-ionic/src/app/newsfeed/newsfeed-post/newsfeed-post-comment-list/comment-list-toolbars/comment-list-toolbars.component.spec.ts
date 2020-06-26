@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { NewsfeedPostCommentsComponent } from './newsfeed-post-comments.component';
+import { CommentListToolbarsComponent } from './comment-list-toolbars.component';
 
-describe('NewsfeedPostCommentsComponent', () => {
-  let component: NewsfeedPostCommentsComponent;
-  let fixture: ComponentFixture<NewsfeedPostCommentsComponent>;
+describe('CommentListToolbarsComponent', () => {
+  let component: CommentListToolbarsComponent;
+  let fixture: ComponentFixture<CommentListToolbarsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NewsfeedPostCommentsComponent ],
+      declarations: [ CommentListToolbarsComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(NewsfeedPostCommentsComponent);
+    fixture = TestBed.createComponent(CommentListToolbarsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

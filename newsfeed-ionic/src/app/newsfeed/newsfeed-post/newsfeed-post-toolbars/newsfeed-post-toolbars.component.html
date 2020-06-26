@@ -1,13 +1,10 @@
 <ion-toolbar>
   <ion-buttons slot="secondary">
-    <ion-button class="ion-no-padding ion-no-margin" fill="clear" (click)="editPost()">
-      <ion-icon slot="icon-only" name="create"></ion-icon>
-    </ion-button>
-    <ion-button class="ion-no-padding ion-no-margin" fill="clear" (click)="confirmDelete()">
-      <ion-icon slot="icon-only" name="trash"></ion-icon>
-    </ion-button>
+    <a routerLink="">
+      <ion-icon class="post-edit" slot="icon-only" name="create" (click)="editPost()"></ion-icon>
+    </a>
+    <a routerLink="">
+      <ion-icon class="post-delete" slot="icon-only" name="trash" (click)="confirmDelete()"></ion-icon>
+    </a>
   </ion-buttons>
-  <ion-title>
-    <a>{{post.postedBy.name}}</a>
-  </ion-title>
 </ion-toolbar>

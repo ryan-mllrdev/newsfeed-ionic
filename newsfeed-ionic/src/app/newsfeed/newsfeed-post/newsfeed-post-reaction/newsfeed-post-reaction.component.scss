@@ -1,1 +1,9 @@
-
+.post-reaction {
+  position: relative;
+  top: 11px;
+  left: 0px;
+  ion-text {
+    color: gray;
+    font-size: 0.8em !important;
+  }
+}
