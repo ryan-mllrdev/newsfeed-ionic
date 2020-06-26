@@ -9,7 +9,7 @@ import { IComment } from 'src/app/interfaces/icomment';
   styleUrls: ['./newsfeed-post-summary.component.scss'],
 })
 export class NewsfeedPostSummaryComponent implements OnInit {
-  constructor(private newsfeedDataService: NewsfeedDataService) {}
+  constructor() {}
 
   @Input() numberOfLikes = 0;
   @Input() numberOfHearts = 0;

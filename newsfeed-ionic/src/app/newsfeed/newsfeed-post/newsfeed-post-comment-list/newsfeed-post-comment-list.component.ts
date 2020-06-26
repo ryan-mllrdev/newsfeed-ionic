@@ -13,29 +13,6 @@ export class NewsfeedPostCommentListComponent implements OnInit {
 
   @Input() comments: IComment[] = [];
   @Input() postId = 0;
-  // @Output() emitExpandedComments: EventEmitter<IComment[]> = new EventEmitter();
-
-  pageSize = 0;
 
   ngOnInit() {}
-
-  expandComments() {
-    this.pageSize++;
-
-    const post: IPost = this.newsfeedDataService.findPost(this.postId);
-
-    if (this.pageSize >= post.comments.length) {
-      this.pageSize = post.comments.length;
-    }
-
-    this.comments = this.newsfeedDataService.getComments(this.postId, this.pageSize);
-    // this.emitExpandedComments.emit(this.comments);
-  }
-
-  collapseComments() {
-    this.pageSize = 0;
-
-    const comments: IComment[] = this.newsfeedDataService.getComments(this.postId, this.pageSize);
-    // this.emitExpandedComments.emit(comments);
-  }
 }

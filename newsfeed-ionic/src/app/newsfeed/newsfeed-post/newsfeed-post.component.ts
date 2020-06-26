@@ -11,11 +11,7 @@ import { IComment } from 'src/app/interfaces/icomment';
   styleUrls: ['./newsfeed-post.component.scss'],
 })
 export class NewsfeedPostComponent implements OnInit {
-  constructor(
-    private newsfeedDataService: NewsfeedDataService,
-    private alertController: AlertController,
-    private newsfeedForm: NewsfeedFormComponent,
-  ) {
+  constructor(private newsfeedDataService: NewsfeedDataService) {
     this.post = newsfeedDataService.findPost(this.postId);
   }
 

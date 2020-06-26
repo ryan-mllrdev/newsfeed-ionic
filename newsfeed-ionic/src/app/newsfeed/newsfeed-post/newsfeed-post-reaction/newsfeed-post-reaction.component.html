@@ -1,22 +1,20 @@
 <ion-row class="ion-no-padding ion-no-margin post-reaction">
   <ion-col size="1" class="ion-no-padding ion-no-margin">
     <ion-button fill="clear" (click)="reactToPost($event, 1)">
-      <ion-icon style="color:rgb(0, 110, 255);border:gray 1px;border-style: solid;" name="thumbs-up"></ion-icon>
+      <ion-icon class="react-thumbs-up" name="thumbs-up"></ion-icon>
     </ion-button>
   </ion-col>
   <ion-col size="1" class="ion-no-padding ion-no-margin">
     <ion-button fill="clear" (click)="reactToPost($event, 2)">
-      <ion-icon style="color:lightcoral;border:gray 1px;border-style: solid;" name="heart"></ion-icon>
+      <ion-icon class="react-heart" name="heart"></ion-icon>
     </ion-button>
   </ion-col>
   <ion-col size="1" class="ion-no-padding ion-no-margin">
     <ion-button fill="clear" (click)="reactToPost($event, 3)">
-      <ion-icon style="color:yellow;border:gray 1px;border-style: solid;" name="happy"></ion-icon>
+      <ion-icon class="react-smile" name="happy"></ion-icon>
     </ion-button>
   </ion-col>
   <ion-col size="1" class="ion-no-padding ion-no-margin">
-    <ion-button fill="clear">
-      <ion-icon style="color:rgb(82, 157, 219);border:gray 1px;border-style: solid;" name="chatbubbles"></ion-icon>
-    </ion-button>
+    <ion-icon class="comment-stats" name="chatbubbles"></ion-icon>
   </ion-col>
 </ion-row>
