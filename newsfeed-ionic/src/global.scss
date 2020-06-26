@@ -34,6 +34,15 @@
   }
 }
 
+.confirm-delete-comment {
+  .alert-head {
+    text-align: center;
+    .alert-title {
+      color: gray;
+    }
+  }
+}
+
 .newsfeed-form-modal {
   .modal-wrapper {
     min-height: 100px;
