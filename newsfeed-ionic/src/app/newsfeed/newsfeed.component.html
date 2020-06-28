@@ -5,11 +5,11 @@
     <ion-col>
 
       <ion-searchbar [(ngModel)]="searchPost"></ion-searchbar>
-      <app-newsfeed-form></app-newsfeed-form>
+      <app-post-form></app-post-form>
 
       <ng-template ngFor let-post [ngForOf]="newsfeed | filter:searchPost | orderBy:id">
         <ion-item-divider>{{post.date|date:'medium'}}</ion-item-divider>
-        <app-newsfeed-post [postId]="post.id"></app-newsfeed-post>
+        <app-post [postId]="post.id"></app-post>
         <ion-row>&nbsp;</ion-row>
         <ion-row>&nbsp;</ion-row>
       </ng-template>

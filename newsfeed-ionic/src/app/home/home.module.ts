@@ -6,17 +6,17 @@ import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
 import { NewsfeedComponent } from '../newsfeed/newsfeed.component';
-import { NewsfeedFormComponent } from '../newsfeed/newsfeed-form/newsfeed-form.component';
-import { NewsfeedFormModalComponent } from '../newsfeed/newsfeed-form/newsfeed-form-modal/newsfeed-form-modal.component';
+import { PostFormComponent } from '../newsfeed/post/post-form/post-form.component';
+import { FormModalComponent } from '../newsfeed/post/post-form/form-modal/form-modal.component';
 
 import { OrderModule } from 'ngx-order-pipe';
-import { NewsfeedPostComponent } from '../newsfeed/newsfeed-post/newsfeed-post.component';
-import { NewsfeedPostCommentComponent } from '../newsfeed/newsfeed-post/newsfeed-post-comment/newsfeed-post-comment.component';
-import { NewsfeedPostReactionComponent } from '../newsfeed/newsfeed-post/newsfeed-post-reaction/newsfeed-post-reaction.component';
-import { NewsfeedPostSummaryComponent } from '../newsfeed/newsfeed-post/newsfeed-post-summary/newsfeed-post-summary.component';
-import { NewsfeedPostToolbarsComponent } from '../newsfeed/newsfeed-post/newsfeed-post-toolbars/newsfeed-post-toolbars.component';
-import { CommentListToolbarsComponent } from '../newsfeed/newsfeed-post/newsfeed-post-comment-list/comment-list-toolbars/comment-list-toolbars.component';
-import { NewsfeedPostCommentListComponent } from '../newsfeed/newsfeed-post/newsfeed-post-comment-list/newsfeed-post-comment-list.component';
+import { PostComponent } from '../newsfeed/post/post.component';
+import { PostCommentComponent } from '../newsfeed/post/post-comment/post-comment.component';
+import { PostReactionComponent } from '../newsfeed/post/post-reaction/post-reaction.component';
+import { PostSummaryComponent } from '../newsfeed/post/post-summary/post-summary.component';
+import { PostToolbarsComponent } from '../newsfeed/post/post-toolbars/post-toolbars.component';
+import { CommentListToolbarsComponent } from '../newsfeed/post/comment-list/comment-list-toolbars/comment-list-toolbars.component';
+import { CommentListComponent } from '../newsfeed/post/comment-list/comment-list.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
@@ -24,15 +24,15 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
   declarations: [
     HomePage,
     NewsfeedComponent,
-    NewsfeedPostComponent,
-    NewsfeedPostCommentComponent,
-    NewsfeedPostReactionComponent,
-    NewsfeedPostSummaryComponent,
-    NewsfeedPostCommentListComponent,
+    PostComponent,
+    PostCommentComponent,
+    PostReactionComponent,
+    PostSummaryComponent,
+    CommentListComponent,
     CommentListToolbarsComponent,
-    NewsfeedPostToolbarsComponent,
-    NewsfeedFormComponent,
-    NewsfeedFormModalComponent,
+    PostToolbarsComponent,
+    PostFormComponent,
+    FormModalComponent,
   ],
 })
 export class HomePageModule {}

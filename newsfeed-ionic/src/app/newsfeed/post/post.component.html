@@ -1,0 +1,30 @@
+<ion-card>
+  <ion-item>
+    <ion-title>
+      <a>{{post.postedBy.name}}</a>
+    </ion-title>
+    <app-post-toolbars [post]="post"></app-post-toolbars>
+  </ion-item>
+
+  <ion-card-content>
+    <p>{{post.message}}</p>
+  </ion-card-content>
+
+  <ion-grid class="ion-no-padding ion-no-margin">
+    <app-post-summary [postId]="post.id" [numberOfLikes]="likes" [numberOfHearts]="hearts" [numberOfSmiles]="smiles"
+      [numberOfComments]="post.comments.length">
+    </app-post-summary>
+    <app-post-reaction (emitLikes)="getLikes($event)" (emitHearts)="getHearts($event)" (emitSmiles)="getSmiles($event)"
+      [postId]="post.id">
+    </app-post-reaction>
+  </ion-grid>
+
+  <app-comment-list [postId]="post.id" [comments]="comments">
+  </app-comment-list>
+
+  <ion-footer>
+    <app-post-comment (emitAllCommentsExpanded)="handleAllCommentsExpanded($event)"
+      (emitComments)="handleEmittedComments($event)" [postId]="post.id">
+    </app-post-comment>
+  </ion-footer>
+</ion-card>
