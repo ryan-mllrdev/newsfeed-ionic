@@ -1,13 +1,15 @@
 <ion-card>
+
   <ion-item>
-    <ion-title>
+    <ion-title slot="start">
       <a>{{post.postedBy.name}}</a>
     </ion-title>
-    <app-post-toolbars [post]="post"></app-post-toolbars>
+    <ion-label>&nbsp;</ion-label>
+    <app-post-toolbars [post]="post" slot="end"></app-post-toolbars>
   </ion-item>
 
   <ion-card-content>
-    <p>{{post.message}}</p>
+    <p class="ion-text-wrap">{{post.message}}</p>
   </ion-card-content>
 
   <ion-grid class="ion-no-padding ion-no-margin">
@@ -27,4 +29,5 @@
       (emitComments)="handleEmittedComments($event)" [postId]="post.id">
     </app-post-comment>
   </ion-footer>
+
 </ion-card>

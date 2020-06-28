@@ -1,28 +1,26 @@
 <ion-item *ngIf="comments.length">
   Comments
 </ion-item>
-<ion-list>
-  <div *ngFor="let comment of comments">
-    <ion-card>
-      <ion-card-content>
-        <ion-text class="posted-by">
-          {{comment.postedBy.name}}:
-        </ion-text>
-        <ion-text class="comment-text">
-          {{comment.message}}
-        </ion-text>
-      </ion-card-content>
-      <ion-item-divider></ion-item-divider>
-      <ion-card-footer>
 
-        <ion-item>
-          <app-comment-list-toolbars slot="start" [postId]="postId" [commentId]="comment.id">
-          </app-comment-list-toolbars>
-          <ion-text slot="end" class="primary">
-            {{comment.date | date: 'medium'}}
-          </ion-text>
-        </ion-item>
-      </ion-card-footer>
-    </ion-card>
-  </div>
-</ion-list>
+<ng-template ngFor let-comment [ngForOf]="comments">
+
+  <ion-item>
+    <ion-chip>
+      <ion-icon name="person-outline"></ion-icon>
+      <ion-label>{{comment.postedBy.name}}</ion-label>
+    </ion-chip>
+    <ion-text class="ion-text-wrap">
+      {{comment.message}}
+    </ion-text>
+  </ion-item>
+
+  <ion-footer>
+    <ion-item>
+      <app-comment-list-toolbars slot="start" [postId]="postId" [commentId]="comment.id"></app-comment-list-toolbars>
+      <ion-text slot="end" class="primary">
+        {{comment.date | date: 'medium'}}
+      </ion-text>
+    </ion-item>
+  </ion-footer>
+
+</ng-template>

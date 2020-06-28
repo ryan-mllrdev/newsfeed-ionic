@@ -1,6 +1,6 @@
 .post-reaction {
   position: relative;
-  top: 11px;
+  top: 8px;
   left: 0px;
   ion-text {
     color: gray;
@@ -10,24 +10,16 @@
 
 .react-thumbs-up {
   color: rgb(0, 110, 255);
-  border: gray 1px;
-  border-style: solid;
 }
 
 .react-heart {
   color: lightcoral;
-  border: gray 1px;
-  border-style: solid;
 }
 
 .react-smile {
-  color: yellow;
-  border: gray 1px;
-  border-style: solid;
+  color: orange;
 }
 
 .comment-stats {
   color: rgb(82, 157, 219);
-  border: gray 1px;
-  border-style: solid;
 }

@@ -1,20 +1,6 @@
-ion-card {
-  box-shadow: 1px 1px;
-
-  ion-card-footer {
-    ion-text {
-      font-size: 10px;
-      float: right;
-      margin: 3px;
-    }
-  }
-  ion-card-content {
-    background-color: #f5f5f5;
-  }
-  ion-card-header {
-    a {
-      text-decoration: underline;
-    }
+ion-footer {
+  ion-text {
+    font-size: 10px;
   }
 }
 
@@ -27,4 +13,6 @@ ion-card {
 }
 
 .comment-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
