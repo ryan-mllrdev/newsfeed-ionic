@@ -33,7 +33,6 @@ export class PostFormComponent implements OnInit {
     });
     this.modal.onDidDismiss().then((data: any) => {
       this.showModal = false;
-      const post: IPost = data.data as IPost;
     });
     return await this.modal.present();
   }

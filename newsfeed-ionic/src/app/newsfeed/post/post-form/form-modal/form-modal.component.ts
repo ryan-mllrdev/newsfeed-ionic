@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { IPost } from 'src/app/interfaces/ipost';
 import { Post } from 'src/app/models/post';
@@ -17,12 +17,15 @@ export class FormModalComponent implements OnInit {
     private formBuilder: FormBuilder,
   ) {
     this.post = new Post();
+    this.originalPostValue = new Post();
     this.postForm = formBuilder.group({});
   }
 
   postForm: FormGroup;
   post: IPost;
   postId = 0;
+  changesApplied = false;
+  originalPostValue: IPost;
   @Input() showModal = true;
 
   ngOnInit() {
@@ -34,6 +37,9 @@ export class FormModalComponent implements OnInit {
       this.post = new Post();
     } else {
       this.post = this.newsfeedDataService.findPost(this.postId);
+      this.originalPostValue = {
+        ...this.post,
+      };
     }
 
     this.postForm = this.formBuilder.group({
@@ -42,6 +48,7 @@ export class FormModalComponent implements OnInit {
   }
 
   postMessage() {
+    this.changesApplied = true;
     this.showModal = false;
 
     if (this.post.id) {
@@ -53,6 +60,10 @@ export class FormModalComponent implements OnInit {
   }
 
   closeModal() {
+    if (!this.changesApplied) {
+      this.post.message = this.originalPostValue.message;
+    }
+    this.changesApplied = false;
     this.showModal = false;
     this.modalController.dismiss();
   }
