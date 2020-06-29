@@ -2,14 +2,15 @@
   <ion-row>
     <ion-col>
     </ion-col>
-    <ion-col>
+    <ion-col size="6">
 
       <ion-searchbar [(ngModel)]="searchPost"></ion-searchbar>
-      <app-post-form></app-post-form>
+      <app-post-form (emitPostedToNewsfeed)="handlePostedToNewsfeed($event)"></app-post-form>
 
       <ng-template ngFor let-post [ngForOf]="newsfeed | filter:searchPost | orderBy:id">
         <ion-item-divider>{{post.date|date:'medium'}}</ion-item-divider>
-        <app-post [postId]="post.id"></app-post>
+        <app-post [numberOfLikes]="numberOfLikes" [numberOfHearts]="numberOfHearts" [numberOfSmiles]="numberOfSmiles"
+          [postId]="post.id"></app-post>
         <ion-row>&nbsp;</ion-row>
         <ion-row>&nbsp;</ion-row>
       </ng-template>

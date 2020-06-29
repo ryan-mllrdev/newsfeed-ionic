@@ -12,22 +12,16 @@
     <p class="ion-text-wrap">{{post.message}}</p>
   </ion-card-content>
 
-  <ion-grid class="ion-no-padding ion-no-margin">
-    <app-post-summary [postId]="post.id" [numberOfLikes]="likes" [numberOfHearts]="hearts" [numberOfSmiles]="smiles"
-      [numberOfComments]="post.comments.length">
-    </app-post-summary>
-    <app-post-reaction (emitLikes)="getLikes($event)" (emitHearts)="getHearts($event)" (emitSmiles)="getSmiles($event)"
-      [postId]="post.id">
+  <ion-item>
+    <app-post-reaction [numberOfLikes]="numberOfLikes" [numberOfHearts]="numberOfHearts"
+      [numberOfSmiles]="numberOfSmiles" [postId]="post.id">
     </app-post-reaction>
-  </ion-grid>
+  </ion-item>
 
   <app-comment-list [postId]="post.id" [comments]="comments">
   </app-comment-list>
 
-  <ion-footer>
-    <app-post-comment (emitAllCommentsExpanded)="handleAllCommentsExpanded($event)"
-      (emitComments)="handleEmittedComments($event)" [postId]="post.id">
-    </app-post-comment>
-  </ion-footer>
+  <app-post-comment (emitComments)="handleEmittedComments($event)" [postId]="post.id">
+  </app-post-comment>
 
 </ion-card>

@@ -8,7 +8,18 @@
   }
 }
 
-.react-thumbs-up {
+ion-fab {
+  ion-fab-button {
+    width: 35px;
+    height: 35px;
+  }
+  ion-fab-list {
+    left: -32px;
+    top: -10px;
+  }
+}
+
+.react-thumbsup {
   color: rgb(0, 110, 255);
 }
 

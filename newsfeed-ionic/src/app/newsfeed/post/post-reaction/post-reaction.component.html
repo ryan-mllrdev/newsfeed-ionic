@@ -1,22 +1,19 @@
-<ion-row class="ion-no-padding ion-no-margin post-reaction">
-  <ion-col size="1" class="ion-no-padding ion-no-margin">
-    <ion-button fill="clear" (click)="reactToPost($event, 1)">
-      <ion-icon class="react-thumbs-up" name="thumbs-up"></ion-icon>
-    </ion-button>
-  </ion-col>
-  <ion-col size="1" class="ion-no-padding ion-no-margin">
-    <ion-button fill="clear" (click)="reactToPost($event, 2)">
-      <ion-icon class="react-heart" name="heart"></ion-icon>
-    </ion-button>
-  </ion-col>
-  <ion-col size="1" class="ion-no-padding ion-no-margin">
-    <ion-button fill="clear" (click)="reactToPost($event, 3)">
-      <ion-icon class="react-smile" name="happy"></ion-icon>
-    </ion-button>
-  </ion-col>
-  <ion-col size="1" class="ion-no-padding ion-no-margin">
-    <ion-button fill="clear">
-      <ion-icon class="comment-stats" name="chatbubbles"></ion-icon>
-    </ion-button>
-  </ion-col>
-</ion-row>
+<ion-fab vertical="bottom">
+  <ion-fab-button>
+    <ion-icon name="thumbs-up"></ion-icon>
+  </ion-fab-button>
+  <ion-fab-list side="end">
+    <ion-fab-button>
+      <ion-icon class="react-thumbsup" name="thumbs-up" (click)="reactToPost($event, 1)"></ion-icon>
+      <label style="font-size:8px;">{{numberOfLikes}}</label>
+    </ion-fab-button>
+    <ion-fab-button>
+      <ion-icon class="react-heart" name="heart" (click)="reactToPost($event, 2)"></ion-icon>
+      <label style="font-size:8px;">{{numberOfHearts}}</label>
+    </ion-fab-button>
+    <ion-fab-button>
+      <ion-icon class="react-smile" name="happy" (click)="reactToPost($event, 3)"></ion-icon>
+      <label style="font-size:8px;">{{numberOfSmiles}}</label>
+    </ion-fab-button>
+  </ion-fab-list>
+</ion-fab>

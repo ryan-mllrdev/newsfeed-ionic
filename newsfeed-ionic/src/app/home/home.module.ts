@@ -13,7 +13,6 @@ import { OrderModule } from 'ngx-order-pipe';
 import { PostComponent } from '../newsfeed/post/post.component';
 import { PostCommentComponent } from '../newsfeed/post/post-comment/post-comment.component';
 import { PostReactionComponent } from '../newsfeed/post/post-reaction/post-reaction.component';
-import { PostSummaryComponent } from '../newsfeed/post/post-summary/post-summary.component';
 import { PostToolbarsComponent } from '../newsfeed/post/post-toolbars/post-toolbars.component';
 import { CommentListToolbarsComponent } from '../newsfeed/post/comment-list/comment-list-toolbars/comment-list-toolbars.component';
 import { CommentListComponent } from '../newsfeed/post/comment-list/comment-list.component';
@@ -27,7 +26,6 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     PostComponent,
     PostCommentComponent,
     PostReactionComponent,
-    PostSummaryComponent,
     CommentListComponent,
     CommentListToolbarsComponent,
     PostToolbarsComponent,

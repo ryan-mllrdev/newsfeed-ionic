@@ -8,6 +8,9 @@ import { IPost } from '../interfaces/ipost';
   styleUrls: ['./newsfeed.component.scss'],
 })
 export class NewsfeedComponent implements OnInit {
+  numberOfLikes = 0;
+  numberOfHearts = 0;
+  numberOfSmiles = 0;
   searchPost = '';
   newsfeed: IPost[] = [];
 
@@ -19,5 +22,11 @@ export class NewsfeedComponent implements OnInit {
 
   private loadNewsfeed() {
     this.newsfeed = this.newsfeedDataService.newsfeed;
+  }
+
+  handlePostedToNewsfeed(postId: number) {
+    this.numberOfLikes = this.newsfeedDataService.getNumberOfLikes(postId);
+    this.numberOfHearts = this.newsfeedDataService.getNumberOfHearts(postId);
+    this.numberOfSmiles = this.newsfeedDataService.getNumberOfSmiles(postId);
   }
 }

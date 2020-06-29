@@ -19,7 +19,6 @@ export class PostCommentComponent implements OnInit {
   commentForm: FormGroup;
   @Input() postId = 0;
   @Output() emitComments: EventEmitter<IComment[]> = new EventEmitter();
-  @Output() emitAllCommentsExpanded: EventEmitter<boolean> = new EventEmitter();
   message = '';
 
   ngOnInit() {}
@@ -30,7 +29,6 @@ export class PostCommentComponent implements OnInit {
     const post: IPost = this.newsfeedDataService.findPost(this.postId);
 
     this.emitComments.emit(post.comments);
-    this.emitAllCommentsExpanded.emit(true);
 
     this.commentForm.reset();
   }

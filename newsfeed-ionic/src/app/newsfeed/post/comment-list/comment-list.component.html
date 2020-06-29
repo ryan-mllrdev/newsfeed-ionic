@@ -1,5 +1,6 @@
 <ion-item *ngIf="comments.length">
   Comments
+  &nbsp;<ion-badge>{{comments.length}}</ion-badge>
 </ion-item>
 
 <ng-template ngFor let-comment [ngForOf]="comments">

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { IPost } from 'src/app/interfaces/ipost';
 import { Post } from 'src/app/models/post';
@@ -49,7 +49,7 @@ export class FormModalComponent implements OnInit {
     } else {
       this.newsfeedDataService.savePost(this.post);
     }
-    this.modalController.dismiss();
+    this.modalController.dismiss(this.post);
   }
 
   closeModal() {
