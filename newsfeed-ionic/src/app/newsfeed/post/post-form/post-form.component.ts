@@ -15,7 +15,6 @@ import { IPost } from 'src/app/interfaces/ipost';
 export class PostFormComponent implements OnInit {
   modal: any;
   showModal = false;
-  @Output() emitPostedToNewsfeed: EventEmitter<number> = new EventEmitter();
 
   constructor(private modalController: ModalController, private newsfeedDataService: NewsfeedDataService) {}
 
@@ -35,7 +34,6 @@ export class PostFormComponent implements OnInit {
     this.modal.onDidDismiss().then((data: any) => {
       this.showModal = false;
       const post: IPost = data.data as IPost;
-      this.emitPostedToNewsfeed.emit(post.id);
     });
     return await this.modal.present();
   }

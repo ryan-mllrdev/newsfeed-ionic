@@ -49,7 +49,7 @@ export class FormModalComponent implements OnInit {
     } else {
       this.newsfeedDataService.savePost(this.post);
     }
-    this.modalController.dismiss(this.post);
+    this.modalController.dismiss();
   }
 
   closeModal() {
