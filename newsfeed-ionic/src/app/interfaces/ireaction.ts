@@ -1,9 +1,9 @@
-import { ReactionTypes } from './reactionTypes';
+import { ReactionType } from '../enums/reaction-type';
 import { IUser } from './iuser';
 
 export interface IReaction {
   id: number;
   date: Date;
-  reactionType: ReactionTypes;
+  reactionType: ReactionType;
   reactedBy: IUser;
 }

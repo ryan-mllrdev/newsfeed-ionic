@@ -4,3 +4,11 @@ ion-card {
     font-weight: bolder;
   }
 }
+
+ion-fab {
+  top: 2rem;
+  ion-fab-button {
+    width: 2rem;
+    height: 2rem;
+  }
+}

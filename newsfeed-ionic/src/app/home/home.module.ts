@@ -17,6 +17,7 @@ import { PostToolbarsComponent } from '../newsfeed/post/post-toolbars/post-toolb
 import { CommentListToolbarsComponent } from '../newsfeed/post/comment-list/comment-list-toolbars/comment-list-toolbars.component';
 import { CommentListComponent } from '../newsfeed/post/comment-list/comment-list.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { NewsfeedNotificationService } from '../services/newsfeed-notification.service';
 
 @NgModule({
   imports: [CommonModule, FormsModule, ReactiveFormsModule, IonicModule, HomePageRoutingModule, OrderModule, Ng2SearchPipeModule],
@@ -32,5 +33,6 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     PostFormComponent,
     FormModalComponent,
   ],
+  providers: [NewsfeedNotificationService],
 })
 export class HomePageModule {}

@@ -10,26 +10,20 @@ import { IPost } from 'src/app/interfaces/ipost';
   styleUrls: ['./post-comment.component.scss'],
 })
 export class PostCommentComponent implements OnInit {
-  constructor(private newsfeedDataService: NewsfeedDataService, private formBuilder: FormBuilder) {
-    this.commentForm = formBuilder.group({
-      message: new FormControl(this.message, Validators.required),
+  commentForm!: FormGroup;
+  @Input() post!: IPost;
+
+  constructor(private newsfeedDataService: NewsfeedDataService, private formBuilder: FormBuilder) {}
+
+  ngOnInit() {
+    this.commentForm = this.formBuilder.group({
+      comment: ['', Validators.required],
     });
   }
 
-  commentForm: FormGroup;
-  @Input() postId = 0;
-  @Output() emitComments: EventEmitter<IComment[]> = new EventEmitter();
-  message = '';
-
-  ngOnInit() {}
-
   writeComment() {
-    this.newsfeedDataService.writeComment(this.postId, this.message);
-
-    const post: IPost = this.newsfeedDataService.findPost(this.postId);
-
-    this.emitComments.emit(post.comments);
-
+    const comment: string = this.commentForm.value.comment;
+    this.newsfeedDataService.addComment(this.post.id, comment);
     this.commentForm.reset();
   }
 }

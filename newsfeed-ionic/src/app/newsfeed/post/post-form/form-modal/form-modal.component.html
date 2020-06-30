@@ -1,17 +1,18 @@
 <ion-card>
   <ion-item lines="none">
-    <span slot="start">Create Post</span>
-    <ion-button fill="clear" *ngIf="showModal" slot="end" (click)="closeModal()">
-      <ion-icon name="close-circle-outline"></ion-icon>
-    </ion-button>
+    <span slot="start">{{ post?.id? 'Edit Post' : 'Create Post' }}</span>
+    <ion-icon *ngIf="showModal" class="close-button" slot="end" name="close-circle-outline" (click)="closeModal()">
+    </ion-icon>
   </ion-item>
+  <ion-item-divider></ion-item-divider>
   <form [formGroup]="postForm" (ngSubmit)="postMessage()">
+    <ion-input type="hidden" formControlName="id"></ion-input>
     <ion-card-content>
-      <ion-textarea placeholder="How are you doing?" formControlName="message" [(ngModel)]="post.message">
+      <ion-textarea placeholder="How are you doing?" formControlName="message">
       </ion-textarea>
     </ion-card-content>
     <ion-footer *ngIf="showModal">
-      <ion-button type="submit" [disabled]="!postForm.valid">Post</ion-button>
+      <ion-button type="submit" [disabled]="!postForm.valid">{{ post?.id? 'Save Changes' : 'Post' }}</ion-button>
     </ion-footer>
   </form>
 </ion-card>

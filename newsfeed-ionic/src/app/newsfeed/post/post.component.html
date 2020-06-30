@@ -13,15 +13,14 @@
   </ion-card-content>
 
   <ion-item>
-    <app-post-reaction [numberOfLikes]="numberOfLikes" [numberOfHearts]="numberOfHearts"
-      [numberOfSmiles]="numberOfSmiles" [postId]="post.id">
+    <app-post-reaction [post]="post">
     </app-post-reaction>
   </ion-item>
 
-  <app-comment-list [postId]="post.id" [comments]="comments">
+  <app-comment-list [post]="post">
   </app-comment-list>
 
-  <app-post-comment (emitComments)="handleEmittedComments($event)" [postId]="post.id">
+  <app-post-comment [post]="post">
   </app-post-comment>
 
 </ion-card>
