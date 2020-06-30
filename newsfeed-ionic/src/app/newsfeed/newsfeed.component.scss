@@ -12,3 +12,11 @@ ion-fab {
     height: 2rem;
   }
 }
+
+ion-grid {
+  ion-item-divider {
+    label {
+      font-size: x-small;
+    }
+  }
+}

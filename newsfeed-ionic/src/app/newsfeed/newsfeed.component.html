@@ -10,12 +10,16 @@
 
       <app-post-form></app-post-form>
 
-      <ng-container *ngFor="let post of newsfeed | filter:searchKeyword | orderBy:id">
-        <ion-item-divider>{{post.date|date:'medium'}}</ion-item-divider>
+      <ion-grid *ngFor="let post of newsfeed | filter:searchKeyword | orderBy:id">
+        <ion-item-divider>
+          {{post.date | date:'medium'}} &nbsp;|&nbsp;
+          <label>
+            {{post.date | distanceToNow}}
+          </label>
+        </ion-item-divider>
         <app-post [post]="post"></app-post>
-        <ion-row>&nbsp;</ion-row>
-        <ion-row>&nbsp;</ion-row>
-      </ng-container>
+        <ion-row></ion-row>
+      </ion-grid>
 
     </ion-col>
     <ion-col>

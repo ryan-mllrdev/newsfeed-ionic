@@ -18,6 +18,7 @@ import { CommentListToolbarsComponent } from '../newsfeed/post/comment-list/comm
 import { CommentListComponent } from '../newsfeed/post/comment-list/comment-list.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NewsfeedNotificationService } from '../services/newsfeed-notification.service';
+import { DistanceToNowPipe } from '../pipes/distance-to-now.pipe';
 
 @NgModule({
   imports: [CommonModule, FormsModule, ReactiveFormsModule, IonicModule, HomePageRoutingModule, OrderModule, Ng2SearchPipeModule],
@@ -32,6 +33,7 @@ import { NewsfeedNotificationService } from '../services/newsfeed-notification.s
     PostToolbarsComponent,
     PostFormComponent,
     FormModalComponent,
+    DistanceToNowPipe,
   ],
   providers: [NewsfeedNotificationService],
 })

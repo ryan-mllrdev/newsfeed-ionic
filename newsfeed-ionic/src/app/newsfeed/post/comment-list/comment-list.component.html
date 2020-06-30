@@ -18,7 +18,10 @@
       <ion-item>
         <app-comment-list-toolbars slot="start" [postId]="post.id" [commentId]="comment.id"></app-comment-list-toolbars>
         <ion-text slot="end" class="primary">
-          {{comment.date | date: 'medium'}}
+          {{comment.date | date: 'medium'}}&nbsp;|&nbsp;
+          <label>
+            {{comment.date | distanceToNow}}
+          </label>
         </ion-text>
       </ion-item>
     </ion-footer>
