@@ -28,7 +28,7 @@ export class NewsfeedDataService {
   updatePost(toBeUpdatedPost: IPost) {
     const index: number = this.newsfeed.findIndex((post) => post.id === toBeUpdatedPost.id);
 
-    if (index) {
+    if (index >= 0) {
       const post: IPost = {
         ...toBeUpdatedPost,
       };
