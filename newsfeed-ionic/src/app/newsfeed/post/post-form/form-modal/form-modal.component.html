@@ -1,8 +1,10 @@
 <ion-card>
   <ion-item lines="none">
     <span slot="start">{{ post?.id? 'Edit Post' : 'Create Post' }}</span>
-    <ion-icon *ngIf="showModal" class="close-button" slot="end" name="close-circle-outline" (click)="closeModal()">
-    </ion-icon>
+    <ion-button class="close-button" color="danger" (click)="closeModal()" slot="end">
+      <ion-icon *ngIf="showModal" name="close-outline">
+      </ion-icon>
+    </ion-button>
   </ion-item>
   <ion-item-divider></ion-item-divider>
   <form [formGroup]="postForm" (ngSubmit)="postMessage()">
@@ -13,7 +15,8 @@
       </ion-textarea>
     </ion-card-content>
     <ion-footer *ngIf="showModal">
-      <ion-button type="submit" [disabled]="!postForm.valid" expand="full">{{ post?.id? 'Save Changes' : 'Post' }}
+      <ion-button type="submit" [disabled]="!postForm.valid" expand="full">
+        {{ post?.id? 'Save Changes' : 'Post' }}
       </ion-button>
     </ion-footer>
   </form>
