@@ -1,9 +1,7 @@
-import { Component, OnInit, Input, OnDestroy, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { NewsfeedDataService } from 'src/app/services/newsfeed-data.service';
-import { AlertController, ModalController, AngularDelegate, ToastController } from '@ionic/angular';
-import { PostFormComponent } from '../post-form/post-form.component';
+import { AlertController, ModalController } from '@ionic/angular';
 import { IPost } from 'src/app/interfaces/ipost';
-import { FormModalComponent } from '../post-form/form-modal/form-modal.component';
 import { NewsfeedNotificationService } from 'src/app/services/newsfeed-notification.service';
 
 @Component({
@@ -18,35 +16,11 @@ export class PostToolbarsComponent implements OnInit, OnDestroy {
   constructor(
     private newsfeedDataService: NewsfeedDataService,
     private alertController: AlertController,
-    private modalController: ModalController,
     private newsfeedNotificationService: NewsfeedNotificationService,
   ) {}
 
   ngOnInit() {}
   ngOnDestroy() {}
-
-  async editPost() {
-    this.modal = await this.modalController.create({
-      component: FormModalComponent,
-      cssClass: 'form-modal',
-      showBackdrop: true,
-      backdropDismiss: false,
-      componentProps: {
-        post: this.post,
-        showModal: true,
-      },
-    });
-
-    this.modal.onDidDismiss().then(async (formData: any) => {
-      if (!formData.data) {
-        return;
-      }
-      const post: IPost = formData.data;
-      this.newsfeedDataService.updatePost(post);
-      await this.newsfeedNotificationService.showSuccess('Changes successfully saved.');
-    });
-    return await this.modal.present();
-  }
 
   deletePost() {
     this.newsfeedDataService.deletePost(this.post.id);

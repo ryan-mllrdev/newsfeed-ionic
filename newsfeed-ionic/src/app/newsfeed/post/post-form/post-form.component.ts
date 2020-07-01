@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ContentChild, TemplateRef } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { NewsfeedDataService } from 'src/app/services/newsfeed-data.service';
 import { FormModalComponent } from './form-modal/form-modal.component';
@@ -10,6 +10,7 @@ import { NewsfeedNotificationService } from 'src/app/services/newsfeed-notificat
   styleUrls: ['./post-form.component.scss'],
 })
 export class PostFormComponent implements OnInit {
+  @ContentChild('modalTemplate', { static: false }) modalTemplateRef!: TemplateRef<any>;
   modal!: any;
   @Input() post!: IPost;
 
@@ -37,9 +38,19 @@ export class PostFormComponent implements OnInit {
       if (!formData.data) {
         return;
       }
+
       const post: IPost = formData.data;
-      this.newsfeedDataService.createPost(post);
-      await this.newsfeedNotificationService.showSuccess('Message successfully posted.');
+      let notificationMessage = '';
+
+      if (post.id) {
+        this.newsfeedDataService.updatePost(post);
+        notificationMessage = 'Changes successfully applied.';
+      } else {
+        this.newsfeedDataService.createPost(post);
+        notificationMessage = 'Message successfully posted.';
+      }
+
+      await this.newsfeedNotificationService.showSuccess(notificationMessage);
     });
     return await this.modal.present();
   }

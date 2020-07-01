@@ -8,7 +8,11 @@
         <ion-searchbar formControlName="searchKeyword"></ion-searchbar>
       </form>
 
-      <app-post-form></app-post-form>
+      <app-post-form [post]="post">
+        <ng-template #modalTemplate let-post="post">
+          <app-form-modal></app-form-modal>
+        </ng-template>
+      </app-post-form>
 
       <ion-grid *ngFor="let post of newsfeed | filter:searchKeyword | orderBy:id">
         <ion-item-divider>
