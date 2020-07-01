@@ -16,13 +16,8 @@ export class NewsfeedDataService {
     this.loadNewsfeed();
   }
 
-  findPost(id: number): IPost {
-    const index: number = this.newsfeed.findIndex((post) => post.id === id);
-    return this.newsfeed[index];
-  }
-
   createPost(post: IPost) {
-    post.id = this.createId();
+    post.id = this.createPostId();
     post.date = new Date();
     post.comments = [];
     post.reactions = [];
@@ -92,28 +87,6 @@ export class NewsfeedDataService {
     post.comments.splice(index, 1);
   }
 
-  getAllComments(postId: number): IComment[] {
-    const post: IPost = this.findPost(postId);
-    return post.comments;
-  }
-
-  getAllReactions(postId: number): IReaction[] {
-    const post: IPost = this.findPost(postId);
-    return post.reactions;
-  }
-
-  createId(): number {
-    const ids: number[] = this.newsfeed.map((post) => {
-      return post.id;
-    });
-
-    if (!ids.length) {
-      return 1;
-    }
-
-    return Math.max(...ids) + 1;
-  }
-
   getNumberOfLikes(reactions: IReaction[]): number {
     return this.getNumberOfReactionType(reactions, ReactionType.LIKE);
   }
@@ -134,6 +107,21 @@ export class NewsfeedDataService {
     return post.comments.length;
   }
 
+  private findPost(id: number): IPost {
+    const index: number = this.newsfeed.findIndex((post) => post.id === id);
+    return this.newsfeed[index];
+  }
+
+  private getComments(postId: number): IComment[] {
+    const post: IPost = this.findPost(postId);
+    return post.comments;
+  }
+
+  private getReactions(postId: number): IReaction[] {
+    const post: IPost = this.findPost(postId);
+    return post.reactions;
+  }
+
   private getNumberOfReactionType(reactions: IReaction[], reactionType: ReactionType): number {
     return reactions.filter((a) => a.reactionType === reactionType).length;
   }
@@ -150,8 +138,20 @@ export class NewsfeedDataService {
     return index;
   }
 
+  private createPostId(): number {
+    const ids: number[] = this.newsfeed.map((post) => {
+      return post.id;
+    });
+
+    if (!ids.length) {
+      return 1;
+    }
+
+    return Math.max(...ids) + 1;
+  }
+
   private createCommentId(postId: number) {
-    const comments: IComment[] = this.getAllComments(postId);
+    const comments: IComment[] = this.getComments(postId);
     const ids: number[] = comments.map((comment) => {
       return comment.id;
     });
@@ -164,7 +164,7 @@ export class NewsfeedDataService {
   }
 
   private createReactionId(postId: number) {
-    const reactions: IReaction[] = this.getAllReactions(postId);
+    const reactions: IReaction[] = this.getReactions(postId);
     const ids: number[] = reactions.map((reaction) => {
       return reaction.id;
     });
