@@ -1,8 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { IPost } from 'src/app/interfaces/ipost';
-import { NewsfeedDataService } from 'src/app/services/newsfeed-data.service';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-form-modal',
@@ -14,11 +13,7 @@ export class FormModalComponent implements OnInit {
   @Input() post!: IPost;
   @Input() showModal = false;
 
-  constructor(
-    private modalController: ModalController,
-    private newsfeedDataService: NewsfeedDataService,
-    private formBuilder: FormBuilder,
-  ) {}
+  constructor(private modalController: ModalController, private formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.postForm = this.formBuilder.group({

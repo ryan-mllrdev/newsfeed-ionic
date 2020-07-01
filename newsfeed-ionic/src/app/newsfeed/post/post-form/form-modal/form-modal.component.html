@@ -8,11 +8,13 @@
   <form [formGroup]="postForm" (ngSubmit)="postMessage()">
     <ion-input type="hidden" formControlName="id"></ion-input>
     <ion-card-content>
-      <ion-textarea placeholder="How are you doing?" formControlName="message">
+      <ion-textarea [disabled]="!showModal" clearOnEdit="true" placeholder="How are you doing?"
+        formControlName="message">
       </ion-textarea>
     </ion-card-content>
     <ion-footer *ngIf="showModal">
-      <ion-button type="submit" [disabled]="!postForm.valid">{{ post?.id? 'Save Changes' : 'Post' }}</ion-button>
+      <ion-button type="submit" [disabled]="!postForm.valid" expand="full">{{ post?.id? 'Save Changes' : 'Post' }}
+      </ion-button>
     </ion-footer>
   </form>
 </ion-card>
