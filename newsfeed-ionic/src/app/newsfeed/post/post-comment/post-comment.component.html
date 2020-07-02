@@ -1,8 +1,6 @@
-<form [formGroup]="commentForm" (ngSubmit)="writeComment()">
-  <ion-item>
-    <ion-input formControlName="comment" clearInput placeholder="Write a comment...">
-    </ion-input>
-    <ion-button type="submit" [disabled]="!commentForm.valid" ion-button icon-start clear small>Go
-    </ion-button>
-  </ion-item>
-</form>
+<ion-item>
+  <ion-input [formControl]="comment" clearInput placeholder="Write a comment...">
+  </ion-input>
+  <ion-button [disabled]="!comment.value" (click)="writeComment()" ion-button icon-start clear small>Go
+  </ion-button>
+</ion-item>

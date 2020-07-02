@@ -1,7 +1,9 @@
 ion-footer {
   ion-text {
+    span{
     font-size: 0.6rem;
-    label {
+    }
+    .date-subtitle {
       font-size: x-small;
     }
   }
@@ -19,4 +21,9 @@ ion-footer {
   font-weight: bold;
   font-family: sans-serif;
   font-size: 1.02rem;
+}
+
+.separator{
+  margin-left: 1rem;
+  margin-right: 1rem;
 }

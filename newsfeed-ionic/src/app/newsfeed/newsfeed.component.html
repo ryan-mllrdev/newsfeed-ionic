@@ -4,9 +4,7 @@
     </ion-col>
     <ion-col size="12">
 
-      <form [formGroup]="searchForm">
-        <ion-searchbar formControlName="searchKeyword"></ion-searchbar>
-      </form>
+      <ion-searchbar [formControl]="searchKeyword"></ion-searchbar>
 
       <app-post-form [post]="post">
         <ng-template #modalTemplate let-post="post">
@@ -16,12 +14,11 @@
         </ng-template>
       </app-post-form>
 
-      <ion-grid *ngFor="let post of newsfeed | filter:searchKeyword | orderBy:id">
+      <ion-grid *ngFor="let post of newsfeed | filter:searchKeyword.value | orderBy:id">
         <ion-item-divider>
-          {{post.date | date:'medium'}} &nbsp;|&nbsp;
-          <label>
-            {{post.date | distanceToNow}}
-          </label>
+          <span>{{post.date | date:'medium'}}</span>
+          <span class="text-separator"></span>
+          <span class="date-subtitle">{{post.date | distanceToNow}}</span>
         </ion-item-divider>
         <app-post [post]="post"></app-post>
         <ion-row></ion-row>

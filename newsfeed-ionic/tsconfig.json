@@ -11,27 +11,61 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2015",
-    "lib": ["es2018", "dom"],
+    "lib": [
+      "es2018",
+      "dom"
+    ],
     "strict": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
     "noImplicitReturns": true,
     "paths": {
-      "*": ["*", "generated/*"],
-      "@rdr/newsfeed-module": ["./src/app/newsfeed/newsfeed.module.ts"],
-      "@rdr/newsfeed": ["./src/app/newsfeed/newsfeed.component.ts"],
-      "@rdr/post": ["./src/app/newsfeed/post/post.component.ts"],
-      "@rdr/post-comment": ["./src/app/newsfeed/post/post-comment/post-comment.component.ts"],
-      "@rdr/post-reaction": ["./src/app/newsfeed/post/post-reaction/post-reaction.component.ts"],
-      "@rdr/post-toolbar": ["./src/app/newsfeed/post/post-toolbars/post-toolbars.component.ts"],
-      "@rdr/post-form": ["./src/app/newsfeed/post/post-form/post-form.component.ts"],
-      "@rdr/form-modal": ["./src/app/newsfeed/post/post-form/form-modal/form-modal.component.ts"],
-      "@rdr/comment-list": ["./src/app/newsfeed/post/comment-list/comment-list.component.ts"],
-      "@rdr/comment-list-toolbar": ["./src/app/newsfeed/post/comment-list/comment-list-toolbars/comment-list-toolbars.component.ts"],
-      "@rdr/interfaces/*": ["./src/app/interfaces/*"],
-      "@rdr/services/*": ["./src/app/services/*"],
-      "@rdr/pipes/*": ["./src/app/pipes/*"],
-      "@rdr/enums/*": ["./src/app/enums/*"]
+      "*": [
+        "*",
+        "generated/*"
+      ],
+      "@rdr/newsfeed-module": [
+        "./src/app/newsfeed/newsfeed.module.ts"
+      ],
+      "@rdr/newsfeed": [
+        "./src/app/newsfeed/newsfeed.component.ts"
+      ],
+      "@rdr/post": [
+        "./src/app/newsfeed/post/post.component.ts"
+      ],
+      "@rdr/post-comment": [
+        "./src/app/newsfeed/post/post-comment/post-comment.component.ts"
+      ],
+      "@rdr/post-reaction": [
+        "./src/app/newsfeed/post/post-reaction/post-reaction.component.ts"
+      ],
+      "@rdr/post-toolbar": [
+        "./src/app/newsfeed/post/post-toolbars/post-toolbars.component.ts"
+      ],
+      "@rdr/post-form": [
+        "./src/app/newsfeed/post/post-form/post-form.component.ts"
+      ],
+      "@rdr/form-modal": [
+        "./src/app/newsfeed/post/post-form/form-modal/form-modal.component.ts"
+      ],
+      "@rdr/comment-list": [
+        "./src/app/newsfeed/post/comment-list/comment-list.component.ts"
+      ],
+      "@rdr/comment-list-toolbar": [
+        "./src/app/newsfeed/post/comment-list/comment-list-toolbars/comment-list-toolbars.component.ts"
+      ],
+      "@rdr/interfaces/*": [
+        "./src/app/interfaces/*"
+      ],
+      "@rdr/services/*": [
+        "./src/app/services/*"
+      ],
+      "@rdr/pipes/*": [
+        "./src/app/pipes/*"
+      ],
+      "@rdr/enums/*": [
+        "./src/app/enums/*"
+      ]
     }
   },
   "angularCompilerOptions": {

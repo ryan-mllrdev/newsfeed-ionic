@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { NewsfeedDataService } from 'src/app/services/newsfeed-data.service';
-import { AlertController, ModalController } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
 import { IPost } from 'src/app/interfaces/ipost';
 import { NewsfeedNotificationService } from 'src/app/services/newsfeed-notification.service';
 
@@ -17,10 +17,10 @@ export class PostToolbarsComponent implements OnInit, OnDestroy {
     private newsfeedDataService: NewsfeedDataService,
     private alertController: AlertController,
     private newsfeedNotificationService: NewsfeedNotificationService,
-  ) {}
+  ) { }
 
-  ngOnInit() {}
-  ngOnDestroy() {}
+  ngOnInit() { }
+  ngOnDestroy() { }
 
   deletePost() {
     this.newsfeedDataService.deletePost(this.post.id);

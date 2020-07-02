@@ -43,20 +43,17 @@ export class NewsfeedDataService {
     this.newsfeed.splice(index, 1);
   }
 
-  addReaction(postId: number, typeOfReaction: ReactionType) {
-    const post: IPost = this.findPost(postId);
-    const reactions: IReaction[] = post.reactions;
-    const reactionIndex: number = reactions.findIndex(
-      (reactionValue) => reactionValue.reactedBy.id === this.defaultUser.id && reactionValue.reactionType === typeOfReaction,
-    );
+  addReaction(postId: number, reactionType: ReactionType) {
 
-    const foundReaction: IReaction = post.reactions[reactionIndex];
+    const post: IPost = this.findPost(postId);
+    const foundReaction = post.reactions.find(reaction => reaction.reactedBy.id === this.defaultUser.id && reaction.reactionType === reactionType);
+
     if (foundReaction) {
       this.deleteReaction(postId, foundReaction.id);
     } else {
       const reaction: IReaction = {
         id: this.createReactionId(postId),
-        reactionType: typeOfReaction,
+        reactionType: reactionType,
         date: new Date(Date.now()),
         reactedBy: this.defaultUser,
       };

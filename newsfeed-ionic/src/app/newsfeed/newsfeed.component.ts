@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NewsfeedDataService } from '../services/newsfeed-data.service';
 import { IPost } from '../interfaces/ipost';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-newsfeed',
@@ -11,19 +11,12 @@ import { FormBuilder } from '@angular/forms';
 export class NewsfeedComponent implements OnInit {
   formModal: any;
   @Input() newsfeed: IPost[] = [];
-  searchForm: any;
   post!: IPost;
-  searchKeyword = '';
+  searchKeyword: any;
 
-  constructor(private newsfeedDataService: NewsfeedDataService, private formBuilder: FormBuilder) {}
+  constructor() { }
 
   ngOnInit() {
-    this.searchForm = this.formBuilder.group({
-      searchKeyword: [],
-    });
-
-    this.searchForm.controls.searchKeyword.valueChanges.subscribe((searchKeyword: any) => {
-      this.searchKeyword = searchKeyword;
-    });
+    this.searchKeyword = new FormControl('');
   }
 }

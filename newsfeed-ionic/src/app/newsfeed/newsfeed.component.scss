@@ -13,10 +13,13 @@ ion-fab {
   }
 }
 
-ion-grid {
-  ion-item-divider {
-    label {
-      font-size: x-small;
-    }
+ion-item-divider {
+  .date-subtitle{
+    font-size: x-small;
+  }
+
+  .text-separator{
+    margin-left: 1rem;
+    margin-right: 1rem;
   }
 }

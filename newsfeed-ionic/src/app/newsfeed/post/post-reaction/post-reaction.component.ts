@@ -15,10 +15,13 @@ export class PostReactionComponent implements OnInit {
   @Input() numberOfLikes = 0;
   @Input() numberOfHearts = 0;
   @Input() numberOfSmiles = 0;
+  like = ReactionType.LIKE;
+  heart = ReactionType.HEART;
+  smile = ReactionType.SMILE;
 
-  constructor(private newsfeedDataService: NewsfeedDataService) {}
+  constructor(private newsfeedDataService: NewsfeedDataService) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   reactToPost(clickEvent: any, reactionType: ReactionType) {
     this.newsfeedDataService.addReaction(this.post.id, reactionType);
@@ -28,17 +31,5 @@ export class PostReactionComponent implements OnInit {
     this.numberOfLikes = this.newsfeedDataService.getNumberOfLikes(reactions);
     this.numberOfHearts = this.newsfeedDataService.getNumberOfHearts(reactions);
     this.numberOfSmiles = this.newsfeedDataService.getNumberOfSmiles(reactions);
-  }
-
-  get LIKE(): ReactionType {
-    return ReactionType.LIKE;
-  }
-
-  get HEART(): ReactionType {
-    return ReactionType.HEART;
-  }
-
-  get SMILE(): ReactionType {
-    return ReactionType.SMILE;
   }
 }

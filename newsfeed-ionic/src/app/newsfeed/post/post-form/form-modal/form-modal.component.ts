@@ -13,7 +13,7 @@ export class FormModalComponent implements OnInit {
   @Input() post!: IPost;
   @Input() showModal = false;
 
-  constructor(private modalController: ModalController, private formBuilder: FormBuilder) {}
+  constructor(private modalController: ModalController, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.postForm = this.formBuilder.group({
@@ -24,7 +24,7 @@ export class FormModalComponent implements OnInit {
       comments: [],
       reactions: [],
     });
-    if (this.post && this.post.id) {
+    if (this.post?.id) {
       this.postForm.setValue(this.post);
     }
   }
