@@ -13,7 +13,7 @@ export class PostCommentComponent implements OnInit {
   comment: any;
   @Input() post!: IPost;
 
-  constructor(private newsfeedDataService: NewsfeedDataService, private formBuilder: FormBuilder) { }
+  constructor(private newsfeedDataService: NewsfeedDataService, private formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.comment = new FormControl('', Validators.required);

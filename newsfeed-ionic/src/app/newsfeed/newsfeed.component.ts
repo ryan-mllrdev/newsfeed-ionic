@@ -14,7 +14,7 @@ export class NewsfeedComponent implements OnInit {
   post!: IPost;
   searchKeyword: any;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     this.searchKeyword = new FormControl('');

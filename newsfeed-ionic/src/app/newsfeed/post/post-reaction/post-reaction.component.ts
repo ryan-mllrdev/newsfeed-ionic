@@ -19,9 +19,9 @@ export class PostReactionComponent implements OnInit {
   heart = ReactionType.HEART;
   smile = ReactionType.SMILE;
 
-  constructor(private newsfeedDataService: NewsfeedDataService) { }
+  constructor(private newsfeedDataService: NewsfeedDataService) {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   reactToPost(clickEvent: any, reactionType: ReactionType) {
     this.newsfeedDataService.addReaction(this.post.id, reactionType);

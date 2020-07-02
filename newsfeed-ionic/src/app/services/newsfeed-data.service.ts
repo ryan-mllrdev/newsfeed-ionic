@@ -44,9 +44,10 @@ export class NewsfeedDataService {
   }
 
   addReaction(postId: number, reactionType: ReactionType) {
-
     const post: IPost = this.findPost(postId);
-    const foundReaction = post.reactions.find(reaction => reaction.reactedBy.id === this.defaultUser.id && reaction.reactionType === reactionType);
+    const foundReaction = post.reactions.find(
+      (reaction) => reaction.reactedBy.id === this.defaultUser.id && reaction.reactionType === reactionType,
+    );
 
     if (foundReaction) {
       this.deleteReaction(postId, foundReaction.id);

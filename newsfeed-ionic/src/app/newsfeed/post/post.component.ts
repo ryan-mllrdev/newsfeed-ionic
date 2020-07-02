@@ -9,7 +9,7 @@ import { IPost } from 'src/app/interfaces/ipost';
 export class PostComponent implements OnInit {
   @Input() post!: IPost;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 }

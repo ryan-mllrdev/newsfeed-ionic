@@ -17,10 +17,10 @@ export class PostToolbarsComponent implements OnInit, OnDestroy {
     private newsfeedDataService: NewsfeedDataService,
     private alertController: AlertController,
     private newsfeedNotificationService: NewsfeedNotificationService,
-  ) { }
+  ) {}
 
-  ngOnInit() { }
-  ngOnDestroy() { }
+  ngOnInit() {}
+  ngOnDestroy() {}
 
   deletePost() {
     this.newsfeedDataService.deletePost(this.post.id);

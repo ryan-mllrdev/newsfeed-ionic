@@ -35,4 +35,4 @@ import { NewsfeedNotificationService } from '@rdr/services/newsfeed-notification
   exports: [NewsfeedComponent],
   providers: [NewsfeedNotificationService],
 })
-export class NewsfeedModule { }
+export class NewsfeedModule {}

@@ -13,7 +13,7 @@ export class FormModalComponent implements OnInit {
   @Input() post!: IPost;
   @Input() showModal = false;
 
-  constructor(private modalController: ModalController, private formBuilder: FormBuilder) { }
+  constructor(private modalController: ModalController, private formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.postForm = this.formBuilder.group({
