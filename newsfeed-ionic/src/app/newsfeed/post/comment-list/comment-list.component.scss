@@ -1,7 +1,18 @@
 ion-footer {
   ion-text {
-    font-size: 10px;
+    span{
+    font-size: 0.6rem;
+    }
+    .date-subtitle {
+      font-size: x-small;
+    }
   }
+}
+
+.comment {
+  font-size: 0.8rem;
+  color: #488aff;
+  font-style: italic;
 }
 
 .posted-by {
@@ -9,10 +20,10 @@ ion-footer {
   text-decoration: underline;
   font-weight: bold;
   font-family: sans-serif;
-  font-size: 11px;
+  font-size: 1.02rem;
 }
 
-.comment-text {
-  overflow: hidden;
-  text-overflow: ellipsis;
+.separator{
+  margin-left: 0.4rem;
+  margin-right: 0.4rem;
 }

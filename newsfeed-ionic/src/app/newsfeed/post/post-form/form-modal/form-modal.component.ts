@@ -1,9 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { IPost } from 'src/app/interfaces/ipost';
-import { Post } from 'src/app/models/post';
-import { NewsfeedDataService } from 'src/app/services/newsfeed-data.service';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-form-modal',
@@ -11,60 +9,34 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
   styleUrls: ['./form-modal.component.scss'],
 })
 export class FormModalComponent implements OnInit {
-  constructor(
-    private modalController: ModalController,
-    private newsfeedDataService: NewsfeedDataService,
-    private formBuilder: FormBuilder,
-  ) {
-    this.post = new Post();
-    this.originalPostValue = new Post();
-    this.postForm = formBuilder.group({});
-  }
+  postForm!: FormGroup;
+  @Input() post!: IPost;
+  @Input() showModal = false;
 
-  postForm: FormGroup;
-  post: IPost;
-  postId = 0;
-  changesApplied = false;
-  originalPostValue: IPost;
-  @Input() showModal = true;
+  constructor(private modalController: ModalController, private formBuilder: FormBuilder) {}
 
   ngOnInit() {
-    this.getPost();
-  }
-
-  private getPost() {
-    if (!this.postId) {
-      this.post = new Post();
-    } else {
-      this.post = this.newsfeedDataService.findPost(this.postId);
-      this.originalPostValue = {
-        ...this.post,
-      };
-    }
-
     this.postForm = this.formBuilder.group({
-      message: new FormControl(this.post.message, Validators.required),
+      id: [],
+      message: ['', Validators.required],
+      date: [],
+      postedBy: [],
+      comments: [],
+      reactions: [],
     });
+    if (this.post?.id) {
+      this.postForm.setValue(this.post);
+    }
   }
 
   postMessage() {
-    this.changesApplied = true;
     this.showModal = false;
-
-    if (this.post.id) {
-      this.newsfeedDataService.updatePost(this.post);
-    } else {
-      this.newsfeedDataService.savePost(this.post);
-    }
-    this.modalController.dismiss();
+    this.modalController.dismiss(this.postForm.value);
   }
 
   closeModal() {
-    if (!this.changesApplied) {
-      this.post.message = this.originalPostValue.message;
-    }
-    this.changesApplied = false;
     this.showModal = false;
+    this.postForm.reset();
     this.modalController.dismiss();
   }
 }

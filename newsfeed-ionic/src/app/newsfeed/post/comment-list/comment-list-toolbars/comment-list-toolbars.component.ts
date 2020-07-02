@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NewsfeedDataService } from 'src/app/services/newsfeed-data.service';
 import { AlertController } from '@ionic/angular';
+import { NewsfeedNotificationService } from 'src/app/services/newsfeed-notification.service';
 
 @Component({
   selector: 'app-comment-list-toolbars',
@@ -8,10 +9,14 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./comment-list-toolbars.component.scss'],
 })
 export class CommentListToolbarsComponent implements OnInit {
-  constructor(private newsfeedDataService: NewsfeedDataService, private alertController: AlertController) {}
-
   @Input() postId = 0;
   @Input() commentId = 0;
+
+  constructor(
+    private newsfeedDataService: NewsfeedDataService,
+    private alertController: AlertController,
+    private newsfeedNotificationService: NewsfeedNotificationService,
+  ) {}
 
   ngOnInit() {}
 
@@ -30,12 +35,13 @@ export class CommentListToolbarsComponent implements OnInit {
         {
           text: 'Cancel',
           role: 'cancel',
-          cssClass: 'secondary',
         },
         {
           text: 'Delete',
-          handler: () => {
+          role: 'delete',
+          handler: async () => {
             this.deleteComment();
+            await this.newsfeedNotificationService.showSuccess('Comment successfully deleted.');
           },
         },
       ],

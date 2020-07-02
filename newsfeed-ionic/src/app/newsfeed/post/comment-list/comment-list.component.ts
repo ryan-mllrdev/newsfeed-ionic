@@ -1,6 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { IComment } from 'src/app/interfaces/icomment';
-import { NewsfeedDataService } from 'src/app/services/newsfeed-data.service';
+import { Component, OnInit, Input } from '@angular/core';
+import { IPost } from 'src/app/interfaces/ipost';
 
 @Component({
   selector: 'app-comment-list',
@@ -8,10 +7,14 @@ import { NewsfeedDataService } from 'src/app/services/newsfeed-data.service';
   styleUrls: ['./comment-list.component.scss'],
 })
 export class CommentListComponent implements OnInit {
-  constructor(private newsfeedDataService: NewsfeedDataService) {}
+  @Input() post!: IPost;
+  commentsVisible = true;
 
-  @Input() comments: IComment[] = [];
-  @Input() postId = 0;
+  constructor() {}
 
   ngOnInit() {}
+
+  toggleComments() {
+    this.commentsVisible = !this.commentsVisible;
+  }
 }

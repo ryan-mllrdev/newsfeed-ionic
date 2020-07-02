@@ -1,31 +1,26 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { NewsfeedDataService } from 'src/app/services/newsfeed-data.service';
 import { AlertController } from '@ionic/angular';
-import { PostFormComponent } from '../post-form/post-form.component';
 import { IPost } from 'src/app/interfaces/ipost';
-import { Post } from 'src/app/models/post';
+import { NewsfeedNotificationService } from 'src/app/services/newsfeed-notification.service';
 
 @Component({
   selector: 'app-post-toolbars',
   templateUrl: './post-toolbars.component.html',
   styleUrls: ['./post-toolbars.component.scss'],
 })
-export class PostToolbarsComponent implements OnInit {
+export class PostToolbarsComponent implements OnInit, OnDestroy {
+  modal: any;
+  @Input() post!: IPost;
+
   constructor(
     private newsfeedDataService: NewsfeedDataService,
     private alertController: AlertController,
-    private newsfeedForm: PostFormComponent,
-  ) {
-    this.post = new Post();
-  }
-
-  @Input() post: IPost;
+    private newsfeedNotificationService: NewsfeedNotificationService,
+  ) {}
 
   ngOnInit() {}
-
-  async editPost() {
-    await this.newsfeedForm.showPostForm(this.post.id);
-  }
+  ngOnDestroy() {}
 
   deletePost() {
     this.newsfeedDataService.deletePost(this.post.id);
@@ -40,12 +35,13 @@ export class PostToolbarsComponent implements OnInit {
         {
           text: 'Cancel',
           role: 'cancel',
-          cssClass: 'secondary',
         },
         {
           text: 'Delete',
-          handler: () => {
+          role: 'delete',
+          handler: async () => {
             this.deletePost();
+            await this.newsfeedNotificationService.showSuccess('Post successfully deleted.');
           },
         },
       ],

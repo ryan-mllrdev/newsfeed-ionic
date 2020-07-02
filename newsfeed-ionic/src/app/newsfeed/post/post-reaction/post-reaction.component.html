@@ -4,16 +4,16 @@
   </ion-fab-button>
   <ion-fab-list side="end">
     <ion-fab-button>
-      <ion-icon class="react-thumbsup" name="thumbs-up" (click)="reactToPost($event, 1)"></ion-icon>
-      <label style="font-size:8px;">{{numberOfLikes}}</label>
+      <ion-icon class="react-thumbsup" name="thumbs-up" (click)="reactToPost($event, like)"></ion-icon>
+      <label>{{numberOfLikes}}</label>
     </ion-fab-button>
     <ion-fab-button>
-      <ion-icon class="react-heart" name="heart" (click)="reactToPost($event, 2)"></ion-icon>
-      <label style="font-size:8px;">{{numberOfHearts}}</label>
+      <ion-icon class="react-heart" name="heart" (click)="reactToPost($event, heart)"></ion-icon>
+      <label>{{numberOfHearts}}</label>
     </ion-fab-button>
     <ion-fab-button>
-      <ion-icon class="react-smile" name="happy" (click)="reactToPost($event, 3)"></ion-icon>
-      <label style="font-size:8px;">{{numberOfSmiles}}</label>
+      <ion-icon class="react-smile" name="happy" (click)="reactToPost($event, smile)"></ion-icon>
+      <label>{{numberOfSmiles}}</label>
     </ion-fab-button>
   </ion-fab-list>
 </ion-fab>

@@ -2,17 +2,27 @@
   <ion-row>
     <ion-col>
     </ion-col>
-    <ion-col size="6">
+    <ion-col size="12">
 
-      <ion-searchbar [(ngModel)]="searchPost"></ion-searchbar>
-      <app-post-form></app-post-form>
+      <ion-searchbar [formControl]="searchKeyword"></ion-searchbar>
 
-      <ng-template ngFor let-post [ngForOf]="newsfeed | filter:searchPost | orderBy:id">
-        <ion-item-divider>{{post.date|date:'medium'}}</ion-item-divider>
-        <app-post [postId]="post.id"></app-post>
-        <ion-row>&nbsp;</ion-row>
-        <ion-row>&nbsp;</ion-row>
-      </ng-template>
+      <app-post-form [post]="post">
+        <ng-template #modalTemplate let-post="post">
+          <ion-button expand="full">
+            Create Post
+          </ion-button>
+        </ng-template>
+      </app-post-form>
+
+      <ion-grid *ngFor="let post of newsfeed | filter:searchKeyword.value | orderBy:id">
+        <ion-item-divider>
+          <span>{{post.date | date:'medium'}}</span>
+          <span class="text-separator">|</span>
+          <span class="date-subtitle">{{post.date | distanceToNow}}</span>
+        </ion-item-divider>
+        <app-post [post]="post"></app-post>
+        <ion-row></ion-row>
+      </ion-grid>
 
     </ion-col>
     <ion-col>

@@ -6,7 +6,6 @@ export interface IPost {
   id: number;
   date: Date;
   message: string;
-  title: string;
   postedBy: IUser;
   comments: IComment[];
   reactions: IReaction[];

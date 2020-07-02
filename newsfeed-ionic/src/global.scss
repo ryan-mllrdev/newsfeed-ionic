@@ -32,6 +32,14 @@
       color: gray;
     }
   }
+  .alert-button-role-cancel {
+    background-color: #32db64;
+    color: white;
+  }
+  .alert-button-role-delete {
+    background-color: #f53d3d;
+    color: white;
+  }
 }
 
 .confirm-delete-comment {
@@ -41,11 +49,18 @@
       color: gray;
     }
   }
+  .alert-button-role-cancel {
+    background-color: #32db64;
+    color: white;
+  }
+  .alert-button-role-delete {
+    background-color: #f53d3d;
+    color: white;
+  }
 }
 
 .form-modal {
   .modal-wrapper {
-    min-height: 100px;
-    height: 210px;
+    height: 14.2rem;
   }
 }

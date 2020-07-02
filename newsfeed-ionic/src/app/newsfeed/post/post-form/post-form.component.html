@@ -1,3 +1,4 @@
-<ion-col (click)="showPostForm()">
-  <app-form-modal [showModal]="showModal"></app-form-modal>
+<ion-col (click)="Open()">
+  <ng-container [ngTemplateOutlet]="modalTemplateRef" [ngTemplateOutletContext]="{ $implicit: post}">
+  </ng-container>
 </ion-col>

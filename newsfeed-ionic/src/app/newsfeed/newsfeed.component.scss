@@ -4,3 +4,22 @@ ion-card {
     font-weight: bolder;
   }
 }
+
+ion-fab {
+  top: 2rem;
+  ion-fab-button {
+    width: 2rem;
+    height: 2rem;
+  }
+}
+
+ion-item-divider {
+  .date-subtitle {
+    font-size: x-small;
+  }
+
+  .text-separator {
+    margin-left: 0.4rem;
+    margin-right: 0.4rem;
+  }
+}

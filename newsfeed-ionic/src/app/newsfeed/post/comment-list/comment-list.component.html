@@ -1,27 +1,32 @@
-<ion-item *ngIf="comments.length">
+<ion-item *ngIf="post.comments.length">
   Comments
-  &nbsp;<ion-badge>{{comments.length}}</ion-badge>
+  &nbsp;<ion-badge (click)="toggleComments()">{{post.comments.length}}</ion-badge>
 </ion-item>
 
-<ng-template ngFor let-comment [ngForOf]="comments">
-
-  <ion-item>
-    <ion-chip>
-      <ion-icon name="person-outline"></ion-icon>
-      <ion-label>{{comment.postedBy.name}}</ion-label>
-    </ion-chip>
-    <ion-text class="ion-text-wrap">
-      {{comment.message}}
-    </ion-text>
-  </ion-item>
-
-  <ion-footer>
+<div *ngIf="commentsVisible">
+  <ng-container *ngFor="let comment of post.comments">
     <ion-item>
-      <app-comment-list-toolbars slot="start" [postId]="postId" [commentId]="comment.id"></app-comment-list-toolbars>
-      <ion-text slot="end" class="primary">
-        {{comment.date | date: 'medium'}}
+      <ion-chip>
+        <ion-icon name="person-outline"></ion-icon>
+        <span>{{comment.postedBy.name}}</span>
+      </ion-chip>
+      <ion-text class="comment ion-text-wrap">
+        {{comment.message}}
       </ion-text>
     </ion-item>
-  </ion-footer>
-
-</ng-template>
+    <ion-footer>
+      <ion-item>
+        <app-comment-list-toolbars slot="start" [postId]="post.id" [commentId]="comment.id"></app-comment-list-toolbars>
+        <ion-text slot="end" class="primary">
+          <span>
+            {{comment.date | date: 'medium'}}
+          </span>
+          <span class="separator">|</span>
+          <span class="date-subtitle">
+            {{comment.date | distanceToNow}}
+          </span>
+        </ion-text>
+      </ion-item>
+    </ion-footer>
+  </ng-container>
+</div>
