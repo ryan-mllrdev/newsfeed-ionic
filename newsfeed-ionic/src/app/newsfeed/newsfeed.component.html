@@ -17,7 +17,7 @@
       <ion-grid *ngFor="let post of newsfeed | filter:searchKeyword.value | orderBy:id">
         <ion-item-divider>
           <span>{{post.date | date:'medium'}}</span>
-          <span class="text-separator"></span>
+          <span class="text-separator">|</span>
           <span class="date-subtitle">{{post.date | distanceToNow}}</span>
         </ion-item-divider>
         <app-post [post]="post"></app-post>
